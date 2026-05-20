@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>On-Duty Incident Report</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Incident Report">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23b91c1c'/%3E%3Ctext x='50' y='44' font-family='Helvetica,Arial,sans-serif' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3ENC%3C/text%3E%3Crect x='15' y='50' width='70' height='3' fill='white'/%3E%3Ctext x='50' y='68' font-family='Helvetica,Arial,sans-serif' font-size='9' font-weight='bold' fill='white' text-anchor='middle' letter-spacing='2'%3EINCIDENT%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --red: #b91c1c;
+    --red-dark: #991b1b;
+    --red-light: #fef2f2;
+    --red-mid: #fca5a5;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --yellow: #d97706;
+    --yellow-light: #fffbeb;
+    --green: #15803d;
+    --green-light: #f0fdf4;
+    --blue: #1d4ed8;
+    --blue-light: #eff6ff;
+    --navy: #1e3a5f;
+    --slate: #334155;
+    --slate-mid: #64748b;
+    --slate-light: #f1f5f9;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 2px 12px rgba(0,0,0,0.10);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --header-h: 64px;
+    --nav-h: 68px;
+    --font: -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: var(--font);
+    background: #f8fafc;
+    color: var(--slate);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  #app-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--red);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(185,28,28,0.3);
+  }
+  .header-logo { display: flex; flex-direction: column; }
+  .header-logo-top { display: flex; align-items: baseline; gap: 6px; }
+  .header-ncems { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+  .header-sub { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 3px; text-transform: uppercase; }
+  .header-line { width: 100%; height: 1.5px; background: rgba(255,255,255,0.4); margin-top: 2px; }
+  .header-org { font-size: 9px; color: rgba(255,255,255,0.6); letter-spacing: 2.5px; text-transform: uppercase; margin-top: 2px; }
+
+  #settings-btn {
+    background: rgba(255,255,255,0.15);
+    border: none; border-radius: 8px;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 18px; cursor: pointer;
+  }
+
+  /* ── CONTENT ── */
+  #content {
+    margin-top: var(--header-h);
+    margin-bottom: var(--nav-h);
+    min-height: calc(100vh - var(--header-h) - var(--nav-h));
+    padding: 16px;
+  }
+
+  /* ── BOTTOM NAV ── */
+  #bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: white;
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+  }
+  .nav-btn {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 3px;
+    background: none; border: none; cursor: pointer;
+    color: var(--slate-mid); transition: color 0.2s;
+    padding-top: 8px;
+  }
+  .nav-btn.active { color: var(--red); }
+  .nav-btn svg { width: 24px; height: 24px; }
+  .nav-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 13px; font-weight: 700; color: var(--slate-mid);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+  }
+
+  /* ── REPORT TAB ── */
+  .section-label {
+    font-size: 11px; font-weight: 700; color: var(--slate-mid);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin: 20px 0 8px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* Incident type buttons */
+  .incident-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px; margin-bottom: 4px;
+  }
+  .incident-btn {
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: white;
+    padding: 12px 6px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    cursor: pointer; transition: all 0.15s;
+    font-family: var(--font);
+  }
+  .incident-btn .i-icon { font-size: 24px; }
+  .incident-btn .i-label { font-size: 11px; font-weight: 700; color: var(--slate); text-align: center; line-height: 1.2; }
+  .incident-btn.selected-injury { border-color: var(--orange); background: var(--orange-light); }
+  .incident-btn.selected-biological { border-color: var(--red); background: var(--red-light); }
+  .incident-btn.selected-chemical { border-color: var(--yellow); background: var(--yellow-light); }
+
+  /* Decision tree */
+  #decision-tree { margin-top: 4px; }
+  .dt-section {
+    background: white; border-radius: var(--radius);
+    border-left: 4px solid var(--border);
+    padding: 14px; margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  .dt-section.bloodborne { border-left-color: var(--red); }
+  .dt-section.airborne { border-left-color: var(--blue); }
+  .dt-section.chemical { border-left-color: var(--yellow); }
+  .dt-section-title {
+    font-size: 12px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 10px; color: var(--slate);
+  }
+  .dt-question {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+  }
+  .dt-question:last-child { border-bottom: none; }
+  .dt-q-text { font-size: 13px; line-height: 1.4; flex: 1; color: var(--slate); }
+  .dt-toggle { display: flex; gap: 6px; flex-shrink: 0; }
+  .dt-yes, .dt-no {
+    border: none; border-radius: 6px; padding: 5px 10px;
+    font-size: 12px; font-weight: 700; cursor: pointer;
+    font-family: var(--font); transition: all 0.15s;
+  }
+  .dt-yes { background: #fee2e2; color: var(--red); }
+  .dt-yes.selected { background: var(--red); color: white; }
+  .dt-no { background: var(--slate-light); color: var(--slate-mid); }
+  .dt-no.selected { background: var(--slate); color: white; }
+
+  .dt-result {
+    border-radius: var(--radius-sm); padding: 10px 12px;
+    margin-top: 8px; font-size: 13px; font-weight: 600;
+    display: none;
+  }
+  .dt-result.contamination { background: var(--yellow-light); color: var(--yellow); display: block; }
+  .dt-result.exposure { background: var(--red-light); color: var(--red); display: block; }
+  .dt-result.none { background: var(--green-light); color: var(--green); display: block; }
+
+  /* Form fields */
+  .form-row { margin-bottom: 12px; }
+  .form-label {
+    display: block; font-size: 12px; font-weight: 700;
+    color: var(--slate-mid); margin-bottom: 5px;
+    text-transform: uppercase; letter-spacing: 0.8px;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 11px 12px;
+    font-size: 16px; font-family: var(--font);
+    color: var(--slate); background: white;
+    appearance: none; -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none; border-color: var(--red);
+  }
+  .form-textarea { min-height: 80px; resize: vertical; }
+  .form-select-wrap { position: relative; }
+  .form-select-wrap::after {
+    content: '▾'; position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%); pointer-events: none;
+    color: var(--slate-mid); font-size: 14px;
+  }
+
+  /* Checkbox grid */
+  .check-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .check-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px; border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); cursor: pointer;
+    transition: all 0.15s; background: white;
+  }
+  .check-item.checked { border-color: var(--red); background: var(--red-light); }
+  .check-item input { display: none; }
+  .check-box {
+    width: 18px; height: 18px; border-radius: 4px;
+    border: 2px solid var(--border); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .check-item.checked .check-box { background: var(--red); border-color: var(--red); color: white; font-size: 11px; }
+  .check-label { font-size: 12px; font-weight: 600; color: var(--slate); line-height: 1.2; }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%; background: var(--red); color: white;
+    border: none; border-radius: var(--radius);
+    padding: 16px; font-size: 16px; font-weight: 800;
+    letter-spacing: 0.5px; cursor: pointer;
+    font-family: var(--font); margin-top: 8px;
+    transition: background 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .submit-btn:active { background: var(--red-dark); }
+  .submit-btn:disabled { background: var(--slate-mid); cursor: not-allowed; }
+
+  /* Alert banner */
+  .alert-banner {
+    border-radius: var(--radius-sm); padding: 12px 14px;
+    margin-bottom: 12px; font-size: 13px; font-weight: 600;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .alert-banner.warning { background: #fef3c7; color: #92400e; border-left: 4px solid var(--yellow); }
+  .alert-banner.danger { background: var(--red-light); color: var(--red-dark); border-left: 4px solid var(--red); }
+  .alert-banner.info { background: var(--blue-light); color: var(--blue); border-left: 4px solid var(--blue); }
+  .alert-banner.success { background: var(--green-light); color: var(--green); border-left: 4px solid var(--green); }
+
+  /* ── REPORTS TAB ── */
+  .report-card {
+    background: white; border-radius: var(--radius);
+    box-shadow: var(--shadow); margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .report-card-header {
+    padding: 12px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .report-type-badge {
+    font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 1px; padding: 3px 8px; border-radius: 20px;
+  }
+  .badge-injury { background: var(--orange-light); color: var(--orange); }
+  .badge-biological { background: var(--red-light); color: var(--red); }
+  .badge-chemical { background: var(--yellow-light); color: var(--yellow); }
+  .badge-contamination { background: #f0f9ff; color: #0284c7; }
+  .report-date { font-size: 12px; color: var(--slate-mid); }
+  .report-card-body { padding: 12px 14px; }
+  .report-name { font-size: 16px; font-weight: 700; color: var(--slate); margin-bottom: 2px; }
+  .report-detail { font-size: 13px; color: var(--slate-mid); margin-bottom: 4px; }
+  .report-narrative { font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.4; }
+
+  .status-badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 3px 8px; border-radius: 20px; margin-top: 6px;
+  }
+  .status-new { background: #fef3c7; color: #92400e; }
+  .status-reviewed { background: var(--green-light); color: var(--green); }
+  .status-closed { background: var(--slate-light); color: var(--slate-mid); }
+
+  .filter-row {
+    display: flex; gap: 8px; margin-bottom: 12px;
+  }
+  .filter-chip {
+    padding: 6px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+    background: white; font-size: 12px; font-weight: 700; cursor: pointer;
+    color: var(--slate-mid); transition: all 0.15s; font-family: var(--font);
+    white-space: nowrap;
+  }
+  .filter-chip.active { background: var(--red); border-color: var(--red); color: white; }
+
+  /* ── SETTINGS ── */
+  .settings-section { margin-bottom: 20px; }
+  .settings-title {
+    font-size: 11px; font-weight: 800; color: var(--slate-mid);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .settings-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .settings-row:last-child { border-bottom: none; }
+  .settings-row-label { font-size: 14px; font-weight: 600; color: var(--slate); }
+  .settings-row-sub { font-size: 12px; color: var(--slate-mid); margin-top: 1px; }
+
+  /* ── MODAL / SHEET ── */
+  .sheet-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 200; display: none; align-items: flex-end;
+  }
+  .sheet-overlay.open { display: flex; }
+  .sheet {
+    background: white; border-radius: 20px 20px 0 0;
+    width: 100%; max-height: 90vh; overflow-y: auto;
+    padding: 20px 16px calc(16px + env(safe-area-inset-bottom));
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .sheet-handle {
+    width: 36px; height: 4px; background: var(--border);
+    border-radius: 2px; margin: 0 auto 16px;
+  }
+  .sheet-title {
+    font-size: 18px; font-weight: 800; color: var(--slate);
+    margin-bottom: 16px; text-align: center;
+  }
+
+  /* ── LOADING ── */
+  .spinner {
+    width: 32px; height: 32px; border: 3px solid var(--border);
+    border-top-color: var(--red); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 32px auto;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    text-align: center; padding: 48px 24px; color: var(--slate-mid);
+  }
+  .empty-icon { font-size: 48px; margin-bottom: 12px; }
+  .empty-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--slate); }
+  .empty-sub { font-size: 13px; line-height: 1.5; }
+
+  /* ── SEVERITY BANNER ── */
+  #severity-banner {
+    background: var(--red); color: white;
+    border-radius: var(--radius); padding: 14px;
+    margin-bottom: 12px; display: none;
+  }
+  #severity-banner.show { display: block; }
+  #severity-banner .sev-title { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+  #severity-banner .sev-body { font-size: 13px; opacity: 0.9; line-height: 1.4; }
+
+  /* ── SUCCESS SCREEN ── */
+  #success-screen {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  #success-screen.show { display: block; }
+  .success-icon { font-size: 64px; margin-bottom: 16px; }
+  .success-title { font-size: 22px; font-weight: 800; color: var(--slate); margin-bottom: 8px; }
+  .success-sub { font-size: 14px; color: var(--slate-mid); line-height: 1.5; margin-bottom: 24px; }
+  .success-ref {
+    background: var(--slate-light); border-radius: var(--radius-sm);
+    padding: 12px; margin-bottom: 24px;
+    font-size: 13px; color: var(--slate-mid);
+  }
+  .success-ref strong { display: block; font-size: 18px; color: var(--slate); letter-spacing: 1px; }
+
+  .btn-outline {
+    width: 100%; background: white; color: var(--red);
+    border: 2px solid var(--red); border-radius: var(--radius);
+    padding: 14px; font-size: 15px; font-weight: 700;
+    cursor: pointer; font-family: var(--font); margin-top: 8px;
+  }
+
+  /* ── HOSPITALIZATION WARNING ── */
+  .hosp-warning {
+    background: var(--red); color: white; border-radius: var(--radius);
+    padding: 16px; margin-bottom: 12px;
+  }
+  .hosp-warning h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+  .hosp-warning p { font-size: 13px; opacity: 0.9; line-height: 1.4; }
+
+  /* Scroll filters */
+  .filter-scroll {
+    display: flex; gap: 8px; overflow-x: auto;
+    padding-bottom: 4px; margin-bottom: 12px;
+    scrollbar-width: none;
+  }
+  .filter-scroll::-webkit-scrollbar { display: none; }
+
+  /* Tab pages */
+  .tab-page { display: none; }
+  .tab-page.active { display: block; }
+
+  /* About */
+  .about-logo { text-align: center; padding: 24px 0 16px; }
+  .about-logo-main { font-size: 32px; font-weight: 900; color: var(--red); letter-spacing: -1px; }
+  .about-logo-line { height: 2px; background: var(--red); width: 80px; margin: 8px auto; }
+  .about-logo-sub { font-size: 11px; letter-spacing: 3px; color: var(--slate-mid); text-transform: uppercase; }
+  .about-version { text-align: center; font-size: 12px; color: var(--slate-mid); margin-top: 8px; }
+
+  .info-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--slate-mid); font-weight: 600; }
+  .info-val { color: var(--slate); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="app-header">
+  <div class="header-logo">
+    <div class="header-logo-top">
+      <span class="header-ncems">NCEMS</span>
+      <span class="header-sub">FD13</span>
+    </div>
+    <div class="header-line"></div>
+    <div class="header-org">North Country EMS · Clark Fire 13</div>
+  </div>
+  <button id="settings-btn" onclick="showTab('settings')" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+  <!-- REPORT TAB -->
+  <div id="tab-report" class="tab-page active">
+    <div id="report-form-wrap">
+
+      <div class="alert-banner danger" id="hosp-alert" style="display:none">
+        <span>🚨</span>
+        <div><strong>POTENTIAL SERIOUS INJURY</strong><br>If hospitalization is likely, notify the On-Duty Chief <strong>immediately</strong> before completing this form. Chief must notify L&amp;I within 8 hours.</div>
+      </div>
+
+      <!-- Step 1: Incident Type -->
+      <div class="section-label">Step 1 — What happened?</div>
+      <div class="incident-grid">
+        <button class="incident-btn" id="btn-injury" onclick="selectIncident('injury')">
+          <span class="i-icon">🦴</span>
+          <span class="i-label">Injury / Illness</span>
+        </button>
+        <button class="incident-btn" id="btn-biological" onclick="selectIncident('biological')">
+          <span class="i-icon">🧫</span>
+          <span class="i-label">Biological Exposure</span>
+        </button>
+        <button class="incident-btn" id="btn-chemical" onclick="selectIncident('chemical')">
+          <span class="i-icon">⚗️</span>
+          <span class="i-label">Chemical Exposure</span>
+        </button>
+      </div>
+
+      <!-- Decision Tree -->
+      <div id="decision-tree" style="display:none; margin-top:12px;">
+
+        <!-- INJURY sub-questions -->
+        <div id="dt-injury" style="display:none;">
+          <div class="dt-section">
+            <div class="dt-section-title">Medical Attention Needed?</div>
+            <div class="dt-question">
+              <div class="dt-q-text">Does this injury/illness require medical evaluation or treatment?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" onclick="setInjuryMedical(true)">YES</button>
+                <button class="dt-no" onclick="setInjuryMedical(false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-question" id="dt-injury-hosp-row" style="display:none;">
+              <div class="dt-q-text">Does this injury suggest possible inpatient hospitalization?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" onclick="setInjuryHosp(true)">YES</button>
+                <button class="dt-no" onclick="setInjuryHosp(false)">NO</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIOLOGICAL sub-questions -->
+        <div id="dt-biological" style="display:none;">
+          <div class="dt-section bloodborne">
+            <div class="dt-section-title">🩸 Bloodborne</div>
+            <div class="dt-question">
+              <div class="dt-q-text">Did blood or body fluids splash onto your intact skin, soak through clothing, or land on glasses/mask?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" id="bb-cont-yes" onclick="setBBCont(true)">YES</button>
+                <button class="dt-no" id="bb-cont-no" onclick="setBBCont(false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-question">
+              <div class="dt-q-text">Did visible blood enter eyes, mouth, or nose? Get into an open wound? Were you stuck by a contaminated needle or cut by a bloody surface?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" id="bb-exp-yes" onclick="setBBExp(true)">YES</button>
+                <button class="dt-no" id="bb-exp-no" onclick="setBBExp(false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-result" id="bb-result"></div>
+          </div>
+          <div class="dt-section airborne">
+            <div class="dt-section-title">💨 Airborne</div>
+            <div class="dt-question">
+              <div class="dt-q-text">Did a patient cough on you while wearing PPE, physical carry while wearing PPE, mucosal secretions on skin, or started exam without PPE then upgraded?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" id="ab-cont-yes" onclick="setABCont(true)">YES</button>
+                <button class="dt-no" id="ab-cont-no" onclick="setABCont(false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-question">
+              <div class="dt-q-text">Did patient cough/sneeze in your unprotected face? Enclosed unventilated area without PPE? Airway procedures without PPE?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" id="ab-exp-yes" onclick="setABExp(true)">YES</button>
+                <button class="dt-no" id="ab-exp-no" onclick="setABExp(false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-result" id="ab-result"></div>
+          </div>
+          <div id="bio-overall-result" class="dt-result" style="margin-top:0;"></div>
+        </div>
+
+        <!-- CHEMICAL sub-questions -->
+        <div id="dt-chemical" style="display:none;">
+          <div class="dt-section chemical">
+            <div class="dt-section-title">⚗️ Chemical Exposure Determination</div>
+            <div class="dt-question">
+              <div class="dt-q-text">Was a hazardous substance inhaled?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" onclick="setChemQ(0,true)">YES</button>
+                <button class="dt-no" onclick="setChemQ(0,false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-question">
+              <div class="dt-q-text">Was a hazardous substance in contact with your skin or mucous membrane?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" onclick="setChemQ(1,true)">YES</button>
+                <button class="dt-no" onclick="setChemQ(1,false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-question">
+              <div class="dt-q-text">Was a hazardous substance ingested?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" onclick="setChemQ(2,true)">YES</button>
+                <button class="dt-no" onclick="setChemQ(2,false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-question">
+              <div class="dt-q-text">Are you displaying signs or symptoms consistent with a hazardous substance exposure?</div>
+              <div class="dt-toggle">
+                <button class="dt-yes" onclick="setChemQ(3,true)">YES</button>
+                <button class="dt-no" onclick="setChemQ(3,false)">NO</button>
+              </div>
+            </div>
+            <div class="dt-result" id="chem-result"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Step 2: Report Form -->
+      <div id="report-form" style="display:none; margin-top:4px;">
+        <div class="section-label">Step 2 — Incident Details</div>
+
+        <div class="card">
+          <div class="form-row">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" id="f-name" type="text" placeholder="Full name" autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Date of Incident</label>
+            <input class="form-input" id="f-date" type="date">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Time of Incident</label>
+            <input class="form-input" id="f-time" type="time">
+          </div>
+          <div class="form-row">
+            <label class="form-label">CRESA Run Number (if applicable)</label>
+            <input class="form-input" id="f-run" type="text" placeholder="e.g. 2026-12345" inputmode="numeric">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Location of Incident</label>
+            <input class="form-input" id="f-location" type="text" placeholder="Address or location description">
+          </div>
+        </div>
+
+        <!-- Injury-specific fields -->
+        <div id="injury-fields" style="display:none;">
+          <div class="card">
+            <div class="card-title">Injury / Illness Details</div>
+            <div class="form-row">
+              <label class="form-label">Nature of Injury</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="f-nature">
+                  <option value="">Select...</option>
+                  <option>Burn</option>
+                  <option>Head Injury</option>
+                  <option>Electrical Shock</option>
+                  <option>Fracture</option>
+                  <option>Laceration</option>
+                  <option>Mental / Emotional / Stress</option>
+                  <option>Noise</option>
+                  <option>Soft Tissue Injury</option>
+                  <option>Sprains &amp; Strains</option>
+                  <option>Thermal Extremes</option>
+                  <option>Traumatic Injuries (Multiple)</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label">Activity at Time of Incident</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="f-activity">
+                  <option value="">Select...</option>
+                  <option>Driving – Non-emergency</option>
+                  <option>Driving – Emergency</option>
+                  <option>Scene Activities – Fire</option>
+                  <option>Scene Activities – EMS</option>
+                  <option>Training</option>
+                  <option>Workout / Exercise</option>
+                  <option>Station Maintenance</option>
+                  <option>Office Activities</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label">Body Part(s) Affected</label>
+              <div class="check-grid" id="body-parts-grid">
+                <!-- populated by JS -->
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label">Will You Seek Medical Treatment?</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="f-treatment">
+                  <option value="">Select...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Not at This Time</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biological-specific fields -->
+        <div id="biological-fields" style="display:none;">
+          <div class="card">
+            <div class="card-title">Biological Exposure Details</div>
+            <div class="form-row">
+              <label class="form-label">Decontamination Completed?</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="f-decon">
+                  <option value="">Select...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label">Route of Exposure</label>
+              <div class="check-grid">
+                <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Inhalation"><div class="check-box"></div><span class="check-label">Inhalation</span></label>
+                <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Absorption"><div class="check-box"></div><span class="check-label">Absorption</span></label>
+                <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Ingestion"><div class="check-box"></div><span class="check-label">Ingestion</span></label>
+                <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Body Fluid"><div class="check-box"></div><span class="check-label">Body Fluid</span></label>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label">Source Patient Name (if known)</label>
+              <input class="form-input" id="f-src-patient" type="text" placeholder="Last, First or Unknown">
+            </div>
+            <div class="form-row">
+              <label class="form-label">Source Patient DOB (if known)</label>
+              <input class="form-input" id="f-src-dob" type="date">
+            </div>
+            <div class="form-row">
+              <label class="form-label">Destination Hospital</label>
+              <input class="form-input" id="f-hospital" type="text" placeholder="Hospital name">
+            </div>
+          </div>
+        </div>
+
+        <!-- Chemical-specific fields -->
+        <div id="chemical-fields" style="display:none;">
+          <div class="card">
+            <div class="card-title">Chemical Exposure Details</div>
+            <div class="form-row">
+              <label class="form-label">Chemical Name / Substance</label>
+              <input class="form-input" id="f-chem-name" type="text" placeholder="Name of chemical or substance">
+            </div>
+            <div class="form-row">
+              <label class="form-label">Decontamination Completed?</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="f-chem-decon">
+                  <option value="">Select...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Common fields -->
+        <div class="card">
+          <div class="form-row">
+            <label class="form-label">Protective Equipment in Use</label>
+            <input class="form-input" id="f-ppe" type="text" placeholder="e.g. Full PPE, gloves only, none">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Witness Names (if any)</label>
+            <input class="form-input" id="f-witnesses" type="text" placeholder="Names of witnesses">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Describe the Incident</label>
+            <textarea class="form-textarea" id="f-narrative" placeholder="Describe what happened in detail..."></textarea>
+          </div>
+        </div>
+
+        <div id="submit-error" class="alert-banner danger" style="display:none;">
+          <span>⚠️</span><div id="submit-error-text">Please fill in all required fields.</div>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" onclick="submitReport()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Submit Report
+        </button>
+        <div style="height:8px;"></div>
+      </div>
+    </div>
+
+    <!-- SUCCESS SCREEN -->
+    <div id="success-screen">
+      <div class="success-icon">✅</div>
+      <div class="success-title">Report Submitted</div>
+      <div class="success-sub">Your incident report has been saved and the on-duty chief has been notified.</div>
+      <div class="success-ref">
+        Reference Number<br>
+        <strong id="success-ref-num">–</strong>
+      </div>
+      <div class="alert-banner info" style="margin-bottom:12px;">
+        <span>📋</span>
+        <div>If you are seeking medical treatment, obtain an <strong>Activity Prescription Form (APF)</strong> from your provider and return it to the Chief as soon as possible.</div>
+      </div>
+      <button class="submit-btn" onclick="resetForm()">Start New Report</button>
+    </div>
+  </div>
+
+  <!-- REPORTS TAB -->
+  <div id="tab-reports" class="tab-page">
+    <div class="filter-scroll" id="reports-filter-row">
+      <button class="filter-chip active" onclick="filterReports('all',this)">All</button>
+      <button class="filter-chip" onclick="filterReports('injury',this)">Injury/Illness</button>
+      <button class="filter-chip" onclick="filterReports('biological',this)">Biological</button>
+      <button class="filter-chip" onclick="filterReports('chemical',this)">Chemical</button>
+      <button class="filter-chip" onclick="filterReports('new',this)">New</button>
+    </div>
+    <div id="reports-list">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div id="tab-settings" class="tab-page">
+    <div class="card">
+      <div class="settings-title">JSONbin Storage</div>
+      <div class="form-row">
+        <label class="form-label">Bin ID</label>
+        <input class="form-input" id="s-bin-id" type="text" placeholder="6a0dd52b...">
+      </div>
+      <div class="form-row">
+        <label class="form-label">API Key (X-Master-Key)</label>
+        <input class="form-input" id="s-api-key" type="password" placeholder="$2a$10$...">
+      </div>
+    </div>
+    <div class="card">
+      <div class="settings-title">Email Notifications</div>
+      <div class="alert-banner info" style="margin-bottom:12px;">
+        <span>ℹ️</span><div>EmailJS setup is required to enable email notifications. See the About tab for setup instructions.</div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">EmailJS Service ID</label>
+        <input class="form-input" id="s-ejs-service" type="text" placeholder="service_xxxxxx">
+      </div>
+      <div class="form-row">
+        <label class="form-label">EmailJS Template ID</label>
+        <input class="form-input" id="s-ejs-template" type="text" placeholder="template_xxxxxx">
+      </div>
+      <div class="form-row">
+        <label class="form-label">EmailJS Public Key</label>
+        <input class="form-input" id="s-ejs-pubkey" type="text" placeholder="Your public key">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Notification Email Address(es)</label>
+        <input class="form-input" id="s-notify-email" type="email" placeholder="chief@agency.org">
+      </div>
+    </div>
+    <div class="card">
+      <div class="settings-title">Chief / BC Access PIN</div>
+      <div class="form-row">
+        <label class="form-label">PIN to View Submitted Reports</label>
+        <input class="form-input" id="s-pin" type="password" placeholder="4-digit PIN" maxlength="4" inputmode="numeric">
+      </div>
+    </div>
+    <button class="submit-btn" onclick="saveSettings()">
+      Save Settings
+    </button>
+    <div id="settings-saved" class="alert-banner success" style="display:none; margin-top:12px;">
+      <span>✅</span><div>Settings saved successfully.</div>
+    </div>
+    <div style="height:8px;"></div>
+
+    <div class="card" style="margin-top:4px;">
+      <div class="settings-title">About</div>
+      <div class="about-logo">
+        <div class="about-logo-main">NCEMS · FD13</div>
+        <div class="about-logo-line"></div>
+        <div class="about-logo-sub">On-Duty Incident Report</div>
+      </div>
+      <div class="info-row"><span class="info-label">Version</span><span class="info-val">1.0</span></div>
+      <div class="info-row"><span class="info-label">Created by</span><span class="info-val">D. Langdon</span></div>
+      <div class="info-row"><span class="info-label">Organization</span><span class="info-val">North Country EMS</span></div>
+      <div class="info-row"><span class="info-label">Policy Ref</span><span class="info-val">Procedure 1034</span></div>
+      <div class="info-row"><span class="info-label">Install on iPhone</span><span class="info-val">Share → Add to Home Screen</span></div>
+      <div class="about-version">© 2026 North Country EMS / Clark Fire District 13</div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav">
+  <button class="nav-btn active" id="nav-report" onclick="showTab('report')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+    </svg>
+    <span class="nav-label">Report</span>
+  </button>
+  <button class="nav-btn" id="nav-reports" onclick="checkPinThenReports()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+      <polyline points="10 9 9 9 8 9"/>
+    </svg>
+    <span class="nav-label">Reports</span>
+  </button>
+  <button class="nav-btn" id="nav-settings" onclick="showTab('settings')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+    <span class="nav-label">Settings</span>
+  </button>
+</nav>
+
+<!-- PIN SHEET -->
+<div class="sheet-overlay" id="pin-overlay" onclick="closePinSheet(event)">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">Chief / BC Access</div>
+    <div style="text-align:center; color:var(--slate-mid); font-size:14px; margin-bottom:16px;">Enter your PIN to view submitted reports</div>
+    <div class="form-row">
+      <input class="form-input" id="pin-input" type="password" inputmode="numeric" maxlength="4" placeholder="••••" style="text-align:center; font-size:28px; letter-spacing:8px;">
+    </div>
+    <div id="pin-error" class="alert-banner danger" style="display:none; margin-top:8px;">
+      <span>⚠️</span><div>Incorrect PIN. Try again.</div>
+    </div>
+    <button class="submit-btn" onclick="verifyPin()" style="margin-top:8px;">Unlock Reports</button>
+    <button class="btn-outline" onclick="closePinOverlay()">Cancel</button>
+  </div>
+</div>
+
+<script>
+// ── CONFIG (loaded from localStorage) ──
+const DEFAULTS = {
+  binId: '6a0dd52b6610dd3ae8787495',
+  apiKey: '$2a$10$pOgAoC1OeKUcWcaCooClKepBJNjjswlc2QP36qjzEQIF8oxPuDVly',
+  notifyEmail: 'd.langdon@northcountryems.org',
+  ejsService: '',
+  ejsTemplate: '',
+  ejsPublicKey: '',
+  pin: '1234'
+};
+
+function getConfig() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('ncems_incident_config') || '{}');
+    return Object.assign({}, DEFAULTS, saved);
+  } catch(e) { return DEFAULTS; }
+}
+
+function saveSettings() {
+  const config = {
+    binId: document.getElementById('s-bin-id').value.trim() || DEFAULTS.binId,
+    apiKey: document.getElementById('s-api-key').value.trim() || DEFAULTS.apiKey,
+    notifyEmail: document.getElementById('s-notify-email').value.trim() || DEFAULTS.notifyEmail,
+    ejsService: document.getElementById('s-ejs-service').value.trim(),
+    ejsTemplate: document.getElementById('s-ejs-template').value.trim(),
+    ejsPublicKey: document.getElementById('s-ejs-pubkey').value.trim(),
+    pin: document.getElementById('s-pin').value.trim() || DEFAULTS.pin
+  };
+  localStorage.setItem('ncems_incident_config', JSON.stringify(config));
+  document.getElementById('settings-saved').style.display = 'flex';
+  setTimeout(() => document.getElementById('settings-saved').style.display = 'none', 3000);
+}
+
+function loadSettingsForm() {
+  const c = getConfig();
+  document.getElementById('s-bin-id').value = c.binId;
+  document.getElementById('s-api-key').value = c.apiKey;
+  document.getElementById('s-notify-email').value = c.notifyEmail;
+  document.getElementById('s-ejs-service').value = c.ejsService;
+  document.getElementById('s-ejs-template').value = c.ejsTemplate;
+  document.getElementById('s-ejs-pubkey').value = c.ejsPublicKey;
+  document.getElementById('s-pin').value = c.pin;
+}
+
+// ── TAB NAVIGATION ──
+let currentTab = 'report';
+function showTab(tab) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  const navBtn = document.getElementById('nav-' + tab);
+  if (navBtn) navBtn.classList.add('active');
+  currentTab = tab;
+  if (tab === 'settings') loadSettingsForm();
+}
+
+// ── BODY PARTS ──
+const BODY_PARTS = [
+  'Head / Brain','Neck','Shoulder','Upper Arm','Elbow','Forearm',
+  'Wrist','Hand / Fingers','Chest','Back (Upper)','Back (Lower)',
+  'Abdominal','Pelvis / Groin','Thigh','Knee','Lower Leg',
+  'Ankle','Foot / Toes','Cardiovascular System','Neurological System',
+  'Respiratory System','Mental / Emotional','Skin','Ear / Eye / Nose / Mouth','Other'
+];
+
+function buildBodyPartsGrid() {
+  const grid = document.getElementById('body-parts-grid');
+  grid.innerHTML = BODY_PARTS.map(p => `
+    <label class="check-item" onclick="toggleCheck(this)">
+      <input type="checkbox" value="${p}">
+      <div class="check-box"></div>
+      <span class="check-label">${p}</span>
+    </label>`).join('');
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  const box = el.querySelector('.check-box');
+  if (el.classList.contains('checked')) {
+    box.textContent = '✓';
+    el.querySelector('input').checked = true;
+  } else {
+    box.textContent = '';
+    el.querySelector('input').checked = false;
+  }
+}
+
+// ── STATE ──
+let incidentType = null;
+let injuryMedical = null;
+let injuryHosp = null;
+let bbCont = null, bbExp = null;
+let abCont = null, abExp = null;
+let chemQ = [null,null,null,null];
+let reportsUnlocked = false;
+let allReports = [];
+let currentFilter = 'all';
+
+// ── INCIDENT TYPE SELECTION ──
+function selectIncident(type) {
+  incidentType = type;
+  injuryMedical = null; injuryHosp = null;
+  bbCont = null; bbExp = null; abCont = null; abExp = null;
+  chemQ = [null,null,null,null];
+
+  ['injury','biological','chemical'].forEach(t => {
+    document.getElementById('btn-'+t).className = 'incident-btn';
+  });
+  document.getElementById('btn-'+type).className = 'incident-btn selected-'+type;
+
+  document.getElementById('decision-tree').style.display = 'block';
+  document.getElementById('dt-injury').style.display = type==='injury' ? 'block' : 'none';
+  document.getElementById('dt-biological').style.display = type==='biological' ? 'block' : 'none';
+  document.getElementById('dt-chemical').style.display = type==='chemical' ? 'block' : 'none';
+
+  document.getElementById('report-form').style.display = 'none';
+  document.getElementById('injury-fields').style.display = 'none';
+  document.getElementById('biological-fields').style.display = 'none';
+  document.getElementById('chemical-fields').style.display = 'none';
+  document.getElementById('hosp-alert').style.display = 'none';
+  resetDTButtons();
+
+  if (type === 'chemical') {
+    // Show form immediately since chemical just needs the questions answered
+  }
+}
+
+function resetDTButtons() {
+  document.querySelectorAll('.dt-yes, .dt-no').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.dt-result').forEach(r => {
+    r.className = 'dt-result'; r.textContent = '';
+  });
+  document.getElementById('dt-injury-hosp-row').style.display = 'none';
+}
+
+// ── INJURY FLOW ──
+function setInjuryMedical(val) {
+  injuryMedical = val;
+  highlightDT('dt-injury', 0, val);
+  if (!val) {
+    document.getElementById('dt-injury-hosp-row').style.display = 'none';
+    showReportForm('injury');
+  } else {
+    document.getElementById('dt-injury-hosp-row').style.display = 'flex';
+  }
+}
+
+function setInjuryHosp(val) {
+  injuryHosp = val;
+  highlightDT('dt-injury', 1, val);
+  if (val) {
+    document.getElementById('hosp-alert').style.display = 'flex';
+  } else {
+    document.getElementById('hosp-alert').style.display = 'none';
+  }
+  showReportForm('injury');
+}
+
+// ── BIOLOGICAL FLOW ──
+function setBBCont(val) {
+  bbCont = val;
+  const btn = document.getElementById(val ? 'bb-cont-yes' : 'bb-cont-no');
+  const other = document.getElementById(val ? 'bb-cont-no' : 'bb-cont-yes');
+  btn.classList.add('selected'); other.classList.remove('selected');
+  updateBioResult();
+}
+function setBBExp(val) {
+  bbExp = val;
+  const btn = document.getElementById(val ? 'bb-exp-yes' : 'bb-exp-no');
+  const other = document.getElementById(val ? 'bb-exp-no' : 'bb-exp-yes');
+  btn.classList.add('selected'); other.classList.remove('selected');
+  updateBioResult();
+}
+function setABCont(val) {
+  abCont = val;
+  const btn = document.getElementById(val ? 'ab-cont-yes' : 'ab-cont-no');
+  const other = document.getElementById(val ? 'ab-cont-no' : 'ab-cont-yes');
+  btn.classList.add('selected'); other.classList.remove('selected');
+  updateBioResult();
+}
+function setABExp(val) {
+  abExp = val;
+  const btn = document.getElementById(val ? 'ab-exp-yes' : 'ab-exp-no');
+  const other = document.getElementById(val ? 'ab-exp-no' : 'ab-exp-yes');
+  btn.classList.add('selected'); other.classList.remove('selected');
+  updateBioResult();
+}
+
+function updateBioResult() {
+  const bbR = document.getElementById('bb-result');
+  const abR = document.getElementById('ab-result');
+  const overall = document.getElementById('bio-overall-result');
+
+  bbR.className = 'dt-result';
+  if (bbExp === true) { bbR.className = 'dt-result exposure'; bbR.textContent = '🚨 BLOODBORNE EXPOSURE — Follow Biological Exposure Procedure'; }
+  else if (bbCont === true && bbExp === false) { bbR.className = 'dt-result contamination'; bbR.textContent = '⚠️ CONTAMINATION — Complete decontamination. Record Only may apply.'; }
+  else if (bbCont === false && bbExp === false) { bbR.className = 'dt-result none'; bbR.textContent = '✅ No bloodborne contamination or exposure detected.'; }
+
+  abR.className = 'dt-result';
+  if (abExp === true) { abR.className = 'dt-result exposure'; abR.textContent = '🚨 AIRBORNE EXPOSURE — Follow Biological Exposure Procedure'; }
+  else if (abCont === true && abExp === false) { abR.className = 'dt-result contamination'; abR.textContent = '⚠️ CONTAMINATION — Complete decontamination. Record Only may apply.'; }
+  else if (abCont === false && abExp === false) { abR.className = 'dt-result none'; abR.textContent = '✅ No airborne contamination or exposure detected.'; }
+
+  const hasExp = bbExp === true || abExp === true;
+  const hasCont = (bbCont === true || abCont === true) && !hasExp;
+  const allAnswered = bbCont !== null && bbExp !== null && abCont !== null && abExp !== null;
+
+  if (allAnswered) {
+    if (hasExp) {
+      overall.className = 'dt-result exposure';
+      overall.textContent = '🚨 EXPOSURE CONFIRMED — On-Duty Chief must complete Biological Exposure Procedure immediately.';
+    } else if (hasCont) {
+      overall.className = 'dt-result contamination';
+      overall.textContent = '⚠️ CONTAMINATION — Decontaminate and complete incident report below.';
+    } else {
+      overall.className = 'dt-result none';
+      overall.textContent = '✅ No exposure or contamination — complete report below for records.';
+    }
+    showReportForm('biological');
+  }
+}
+
+// ── CHEMICAL FLOW ──
+function setChemQ(idx, val) {
+  chemQ[idx] = val;
+  const section = document.getElementById('dt-chemical').querySelector('.dt-section');
+  const questions = section.querySelectorAll('.dt-question');
+  const yesBtn = questions[idx].querySelectorAll('.dt-yes')[0];
+  const noBtn = questions[idx].querySelectorAll('.dt-no')[0];
+  if (val) { yesBtn.classList.add('selected'); noBtn.classList.remove('selected'); }
+  else { noBtn.classList.add('selected'); yesBtn.classList.remove('selected'); }
+
+  const allAnswered = chemQ.every(q => q !== null);
+  if (allAnswered) {
+    const hasExp = chemQ.some(q => q === true);
+    const result = document.getElementById('chem-result');
+    if (hasExp) {
+      result.className = 'dt-result exposure';
+      result.textContent = '🚨 CHEMICAL EXPOSURE — Notify On-Duty Chief. Activity Prescription Form (APF) required if provider seen.';
+    } else {
+      result.className = 'dt-result none';
+      result.textContent = '✅ No chemical exposure — complete report below as Record Only.';
+    }
+    showReportForm('chemical');
+  }
+}
+
+function highlightDT(sectionId, rowIndex, val) {
+  const section = document.getElementById(sectionId);
+  const rows = section.querySelectorAll('.dt-question');
+  if (!rows[rowIndex]) return;
+  const yes = rows[rowIndex].querySelector('.dt-yes');
+  const no = rows[rowIndex].querySelector('.dt-no');
+  if (val) { yes.classList.add('selected'); no.classList.remove('selected'); }
+  else { no.classList.add('selected'); yes.classList.remove('selected'); }
+}
+
+function showReportForm(type) {
+  document.getElementById('report-form').style.display = 'block';
+  document.getElementById('injury-fields').style.display = type==='injury' ? 'block' : 'none';
+  document.getElementById('biological-fields').style.display = type==='biological' ? 'block' : 'none';
+  document.getElementById('chemical-fields').style.display = type==='chemical' ? 'block' : 'none';
+  setTimeout(() => {
+    document.getElementById('report-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+// ── SUBMIT REPORT ──
+async function submitReport() {
+  const name = document.getElementById('f-name').value.trim();
+  const date = document.getElementById('f-date').value;
+  const time = document.getElementById('f-time').value;
+  const narrative = document.getElementById('f-narrative').value.trim();
+
+  if (!name || !date || !narrative || !incidentType) {
+    document.getElementById('submit-error').style.display = 'flex';
+    document.getElementById('submit-error-text').textContent = 'Please fill in your name, date, and incident description.';
+    return;
+  }
+  document.getElementById('submit-error').style.display = 'none';
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner" style="width:20px;height:20px;margin:0;border-width:2px;"></div> Submitting...';
+
+  const report = buildReportObject(name, date, time, narrative);
+  const saved = await saveReport(report);
+
+  if (saved) {
+    await sendEmailNotification(report);
+    document.getElementById('report-form-wrap').style.display = 'none';
+    document.getElementById('success-screen').classList.add('show');
+    document.getElementById('success-ref-num').textContent = report.id;
+  } else {
+    document.getElementById('submit-error').style.display = 'flex';
+    document.getElementById('submit-error-text').textContent = 'Failed to save report. Check your Settings and try again.';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg> Submit Report';
+}
+
+function buildReportObject(name, date, time, narrative) {
+  const now = Date.now();
+  const id = 'INC-' + new Date().getFullYear() + '-' + String(now).slice(-6);
+
+  const report = {
+    id, name, date, time, narrative,
+    type: incidentType,
+    location: document.getElementById('f-location').value.trim(),
+    runNumber: document.getElementById('f-run').value.trim(),
+    ppe: document.getElementById('f-ppe').value.trim(),
+    witnesses: document.getElementById('f-witnesses').value.trim(),
+    submittedAt: now,
+    status: 'new'
+  };
+
+  if (incidentType === 'injury') {
+    report.nature = document.getElementById('f-nature').value;
+    report.activity = document.getElementById('f-activity').value;
+    report.treatment = document.getElementById('f-treatment').value;
+    report.needsMedical = injuryMedical;
+    report.possibleHospitalization = injuryHosp;
+    report.bodyParts = Array.from(document.querySelectorAll('#body-parts-grid .check-item.checked input')).map(i => i.value);
+  }
+
+  if (incidentType === 'biological') {
+    report.decon = document.getElementById('f-decon').value;
+    report.sourcePatient = document.getElementById('f-src-patient').value.trim();
+    report.sourcePatientDOB = document.getElementById('f-src-dob').value;
+    report.hospital = document.getElementById('f-hospital').value.trim();
+    report.routeOfExposure = Array.from(document.querySelectorAll('#biological-fields .check-item.checked input')).map(i => i.value);
+    report.bbContamination = bbCont;
+    report.bbExposure = bbExp;
+    report.abContamination = abCont;
+    report.abExposure = abExp;
+    report.exposureConfirmed = (bbExp === true || abExp === true);
+  }
+
+  if (incidentType === 'chemical') {
+    report.chemicalName = document.getElementById('f-chem-name').value.trim();
+    report.chemDecon = document.getElementById('f-chem-decon').value;
+    report.chemExposure = chemQ.some(q => q === true);
+    report.chemAnswers = chemQ;
+  }
+
+  return report;
+}
+
+// ── JSONBIN ──
+async function loadBin() {
+  const c = getConfig();
+  try {
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${c.binId}/latest`, {
+      headers: { 'X-Master-Key': c.apiKey }
+    });
+    const data = await res.json();
+    return data.record || { reports: [] };
+  } catch(e) { return { reports: [] }; }
+}
+
+async function saveBin(record) {
+  const c = getConfig();
+  try {
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${c.binId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': c.apiKey
+      },
+      body: JSON.stringify(record)
+    });
+    return res.ok;
+  } catch(e) { return false; }
+}
+
+async function saveReport(report) {
+  const record = await loadBin();
+  if (!record.reports) record.reports = [];
+  record.reports.unshift(report);
+  return await saveBin(record);
+}
+
+// ── EMAIL (EmailJS) ──
+async function sendEmailNotification(report) {
+  const c = getConfig();
+  if (!c.ejsService || !c.ejsTemplate || !c.ejsPublicKey) return;
+
+  try {
+    if (!window.emailjs) {
+      await loadScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js');
+      emailjs.init(c.ejsPublicKey);
+    }
+    const typeLabel = { injury:'Injury/Illness', biological:'Biological Exposure', chemical:'Chemical Exposure' }[report.type] || report.type;
+    await emailjs.send(c.ejsService, c.ejsTemplate, {
+      to_email: c.notifyEmail,
+      subject: `[NCEMS Incident Report] ${typeLabel} — ${report.name}`,
+      employee_name: report.name,
+      incident_type: typeLabel,
+      incident_date: report.date,
+      incident_time: report.time,
+      location: report.location || 'Not specified',
+      run_number: report.runNumber || 'N/A',
+      narrative: report.narrative,
+      report_id: report.id,
+      serious: report.possibleHospitalization ? 'YES — POSSIBLE HOSPITALIZATION' : 'No'
+    });
+  } catch(e) { console.warn('Email notification failed:', e); }
+}
+
+function loadScript(src) {
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+}
+
+// ── REPORTS TAB ──
+function checkPinThenReports() {
+  if (reportsUnlocked) {
+    showTab('reports');
+    loadReports();
+  } else {
+    document.getElementById('pin-overlay').classList.add('open');
+    document.getElementById('pin-input').value = '';
+    document.getElementById('pin-error').style.display = 'none';
+    setTimeout(() => document.getElementById('pin-input').focus(), 300);
+  }
+}
+
+function closePinSheet(e) {
+  if (e.target === document.getElementById('pin-overlay')) closePinOverlay();
+}
+function closePinOverlay() {
+  document.getElementById('pin-overlay').classList.remove('open');
+}
+
+function verifyPin() {
+  const entered = document.getElementById('pin-input').value.trim();
+  const correct = getConfig().pin;
+  if (entered === correct) {
+    reportsUnlocked = true;
+    closePinOverlay();
+    showTab('reports');
+    loadReports();
+  } else {
+    document.getElementById('pin-error').style.display = 'flex';
+    document.getElementById('pin-input').value = '';
+  }
+}
+
+document.getElementById('pin-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') verifyPin();
+});
+
+async function loadReports() {
+  document.getElementById('reports-list').innerHTML = '<div class="spinner"></div>';
+  const record = await loadBin();
+  allReports = record.reports || [];
+  renderReports(currentFilter);
+}
+
+function filterReports(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('#reports-filter-row .filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderReports(filter);
+}
+
+function renderReports(filter) {
+  let reports = allReports;
+  if (filter === 'new') reports = reports.filter(r => r.status === 'new');
+  else if (filter !== 'all') reports = reports.filter(r => r.type === filter);
+
+  const container = document.getElementById('reports-list');
+  if (!reports.length) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">No reports found</div><div class="empty-sub">No ${filter === 'all' ? '' : filter + ' '}reports have been submitted yet.</div></div>`;
+    return;
+  }
+
+  container.innerHTML = reports.map(r => {
+    const typeLabel = { injury:'Injury/Illness', biological:'Biological Exposure', chemical:'Chemical Exposure' }[r.type] || r.type;
+    const badgeClass = { injury:'badge-injury', biological:'badge-biological', chemical:'badge-chemical' }[r.type] || '';
+    const statusClass = { new:'status-new', reviewed:'status-reviewed', closed:'status-closed' }[r.status] || 'status-new';
+    const statusLabel = { new:'New', reviewed:'Reviewed', closed:'Closed' }[r.status] || 'New';
+    const dt = new Date(r.submittedAt);
+    const dateStr = dt.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+    const timeStr = dt.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+
+    let details = '';
+    if (r.type === 'injury' && r.nature) details = `<div class="report-detail">📋 ${r.nature}${r.activity ? ' · ' + r.activity : ''}</div>`;
+    if (r.type === 'biological') details = `<div class="report-detail">${r.exposureConfirmed ? '🚨 Exposure Confirmed' : '⚠️ Contamination Only'}</div>`;
+    if (r.type === 'chemical') details = `<div class="report-detail">${r.chemExposure ? '🚨 Chemical Exposure' : '⚠️ Possible Contamination'}${r.chemicalName ? ' · ' + r.chemicalName : ''}</div>`;
+    if (r.location) details += `<div class="report-detail">📍 ${r.location}</div>`;
+    if (r.runNumber) details += `<div class="report-detail">🚒 Run #${r.runNumber}</div>`;
+
+    return `
+    <div class="report-card">
+      <div class="report-card-header">
+        <span class="report-type-badge ${badgeClass}">${typeLabel}</span>
+        <span class="report-date">${dateStr} ${timeStr}</span>
+      </div>
+      <div class="report-card-body">
+        <div class="report-name">${r.name}</div>
+        ${details}
+        <div class="report-narrative">${r.narrative.length > 120 ? r.narrative.slice(0,120)+'…' : r.narrative}</div>
+        <div style="display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap;">
+          <span class="status-badge ${statusClass}">${statusLabel}</span>
+          <span style="font-size:11px; color:var(--slate-mid);">${r.id}</span>
+          ${r.possibleHospitalization ? '<span class="status-badge" style="background:#fee2e2;color:var(--red);">⚠️ Possible Hospitalization</span>' : ''}
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button onclick="markStatus('${r.id}', 'reviewed')" style="flex:1;padding:7px;border:1.5px solid var(--green);border-radius:8px;background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font);">Mark Reviewed</button>
+          <button onclick="markStatus('${r.id}', 'closed')" style="flex:1;padding:7px;border:1.5px solid var(--border);border-radius:8px;background:var(--slate-light);color:var(--slate-mid);font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font);">Close</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function markStatus(id, status) {
+  const record = await loadBin();
+  const r = (record.reports || []).find(r => r.id === id);
+  if (r) { r.status = status; await saveBin(record); }
+  allReports = record.reports || [];
+  renderReports(currentFilter);
+}
+
+// ── RESET ──
+function resetForm() {
+  incidentType = null;
+  injuryMedical = null; injuryHosp = null;
+  bbCont = null; bbExp = null; abCont = null; abExp = null;
+  chemQ = [null,null,null,null];
+
+  ['injury','biological','chemical'].forEach(t => {
+    document.getElementById('btn-'+t).className = 'incident-btn';
+  });
+
+  document.getElementById('decision-tree').style.display = 'none';
+  document.getElementById('report-form').style.display = 'none';
+  document.getElementById('hosp-alert').style.display = 'none';
+  document.getElementById('report-form-wrap').style.display = 'block';
+  document.getElementById('success-screen').classList.remove('show');
+
+  // Reset form fields
+  ['f-name','f-date','f-time','f-run','f-location','f-nature','f-activity',
+   'f-treatment','f-decon','f-src-patient','f-src-dob','f-hospital',
+   'f-chem-name','f-chem-decon','f-ppe','f-witnesses','f-narrative'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+
+  document.querySelectorAll('.check-item.checked').forEach(el => {
+    el.classList.remove('checked');
+    const box = el.querySelector('.check-box');
+    if (box) box.textContent = '';
+    const inp = el.querySelector('input');
+    if (inp) inp.checked = false;
+  });
+
+  resetDTButtons();
+  window.scrollTo(0,0);
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  buildBodyPartsGrid();
+  // Set today's date as default
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('f-date').value = today;
+  const now = new Date();
+  document.getElementById('f-time').value = now.toTimeString().slice(0,5);
+});
+</script>
+</body>
+</html>
