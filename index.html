@@ -25,21 +25,21 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:100vh;overflow-x:hidden}
 #app-header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:var(--red);display:flex;align-items:center;justify-content:center;z-index:200;box-shadow:0 2px 10px rgba(185,28,28,.35);flex-direction:column}
-.hdr-title{color:#fff;font-size:15px;font-weight:900;letter-spacing:1px;text-align:center;text-transform:uppercase}
-.hdr-sub{color:rgba(255,255,255,.65);font-size:9px;letter-spacing:3px;text-transform:uppercase;text-align:center;margin-top:2px}
+.hdr-title{color:#fff;font-size:17px;font-weight:900;letter-spacing:1px;text-align:center;text-transform:uppercase}
+.hdr-sub{color:rgba(255,255,255,.7);font-size:12px;letter-spacing:3px;text-transform:uppercase;text-align:center;margin-top:2px}
 #content{margin-top:var(--header-h);margin-bottom:var(--nav-h);padding:13px}
 #bottom-nav{position:fixed;bottom:0;left:0;right:0;height:var(--nav-h);background:#fff;border-top:1px solid var(--slate-border);display:flex;z-index:200;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 10px rgba(0,0,0,.06)}
-.nav-btn{flex:1;min-width:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;border:none;cursor:pointer;color:var(--slate-mid);padding-top:8px;font-family:var(--font)}
+.nav-btn{flex:1;min-width:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;border:none;cursor:pointer;color:var(--slate-mid);font-family:var(--font)}
 .nav-btn.active{color:var(--red)}
 .nav-btn svg{width:21px;height:21px}
-.nav-label{font-size:9px;font-weight:700;white-space:nowrap}
+.nav-label{font-size:14px;font-weight:800;white-space:nowrap}
 .tab-page{display:none}.tab-page.active{display:block}
 .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;margin-bottom:11px}
-.card-title{font-size:11px;font-weight:800;color:var(--slate-mid);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:11px}
-.sec-label{font-size:11px;font-weight:800;color:var(--slate-mid);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px}
+.card-title{font-size:15px;font-weight:800;color:var(--slate-mid);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:11px}
+.sec-label{font-size:15px;font-weight:800;color:var(--slate-mid);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px}
 .req{color:var(--red);font-weight:900}
 .form-row{margin-bottom:11px}
-.form-label{display:block;font-size:11px;font-weight:700;color:var(--slate-mid);margin-bottom:4px;text-transform:uppercase;letter-spacing:.7px}
+.form-label{display:block;font-size:15px;font-weight:700;color:var(--slate-mid);margin-bottom:4px;text-transform:uppercase;letter-spacing:.7px}
 .form-input,.form-select,.form-textarea{width:100%;border:1.5px solid var(--slate-border);border-radius:var(--radius-sm);padding:11px 12px;font-size:16px;font-family:var(--font);color:var(--slate);background:#fff;-webkit-appearance:none;transition:border-color .15s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--red)}
 .form-textarea{min-height:90px;resize:vertical}
@@ -48,93 +48,93 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
 .check-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1.5px solid var(--slate-border);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;background:#fff;user-select:none}
 .check-item.chk{border-color:var(--red);background:var(--red-light)}
 .check-item input{display:none}
-.chk-box{width:18px;height:18px;border-radius:4px;border:2px solid var(--slate-border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:11px}
+.chk-box{width:18px;height:18px;border-radius:4px;border:2px solid var(--slate-border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:13px}
 .check-item.chk .chk-box{background:var(--red);border-color:var(--red);color:#fff}
-.chk-label{font-size:12px;font-weight:600;color:var(--slate);line-height:1.2}
+.chk-label{font-size:14px;font-weight:600;color:var(--slate);line-height:1.25}
 .yn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
-.yn-yes{background:var(--red);color:#fff;border:none;border-radius:var(--radius-sm);padding:16px;font-size:17px;font-weight:900;cursor:pointer;font-family:var(--font)}
-.yn-no{background:var(--green-light);color:var(--green);border:2px solid var(--green);border-radius:var(--radius-sm);padding:16px;font-size:17px;font-weight:900;cursor:pointer;font-family:var(--font)}
-.yn-yes.sel{box-shadow:0 0 0 3px rgba(185,28,28,.35)}.yn-no.sel{box-shadow:0 0 0 3px rgba(21,128,61,.35)}
-.alert{border-radius:var(--radius-sm);padding:11px 13px;margin-bottom:10px;font-size:13px;font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.yn-yes{background:var(--red);color:#fff;border:2px solid var(--red);border-radius:var(--radius-sm);padding:16px;font-size:18px;font-weight:900;cursor:pointer;font-family:var(--font)}
+.yn-no{background:var(--green-light);color:var(--green);border:2px solid var(--green);border-radius:var(--radius-sm);padding:16px;font-size:18px;font-weight:900;cursor:pointer;font-family:var(--font)}
+.yn-yes.sel{border-color:#000;box-shadow:0 0 0 3px #000}.yn-no.sel{box-shadow:0 0 0 3px rgba(21,128,61,.35)}
+.alert{border-radius:var(--radius-sm);padding:11px 13px;margin-bottom:10px;font-size:15px;font-weight:600;display:flex;align-items:flex-start;gap:8px;line-height:1.45}
 .alert-danger{background:var(--red-light);color:var(--red-dark);border-left:4px solid var(--red)}
 .alert-warning{background:#fef3c7;color:#92400e;border-left:4px solid var(--yellow-border)}
 .alert-info{background:var(--blue-light);color:var(--blue);border-left:4px solid var(--blue)}
 .alert-success{background:var(--green-light);color:var(--green);border-left:4px solid var(--green)}
-.alert-yellow{background:var(--yellow-bg);color:#92400e;border:2px solid var(--yellow-border);border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;line-height:1.5}
-.alert-green{background:var(--green-bg);color:var(--green);border:2px solid #86efac;border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;line-height:1.5}
+.alert-yellow{background:var(--yellow-bg);color:#92400e;border:2px solid var(--yellow-border);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;line-height:1.5}
+.alert-green{background:var(--green-bg);color:var(--green);border:2px solid #86efac;border-radius:var(--radius-sm);padding:12px 14px;font-size:15px;line-height:1.5}
 .btn-primary{width:100%;background:var(--red);color:#fff;border:none;border-radius:var(--radius);padding:15px;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font);display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-primary:active{background:var(--red-dark)}
 .btn-primary:disabled{background:var(--slate-mid);cursor:not-allowed}
 .btn-outline{width:100%;background:#fff;color:var(--red);border:2px solid var(--red);border-radius:var(--radius);padding:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px}
 .btn-green{width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--radius);padding:15px;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font)}
-.btn-sm{padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font);border:none}
-.inc-btn{border:2px solid var(--slate-border);border-radius:var(--radius-sm);background:#fff;padding:12px 5px;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;transition:all .15s;font-family:var(--font)}
+.btn-sm{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font);border:none}
+.inc-btn{border:2px solid var(--slate-border);border-radius:var(--radius-sm);background:#fff;padding:18px 16px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:all .15s;font-family:var(--font);width:100%}
 .inc-btn .i-icon{font-size:22px}
-.inc-btn .i-label{font-size:10px;font-weight:800;color:var(--slate);text-align:center;line-height:1.2}
-.inc-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:4px}
+.inc-btn .i-label{font-size:17px;font-weight:800;color:var(--slate);text-align:center;line-height:1.2}
+.inc-grid-3{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:4px}
 .inc-btn.sel-injury{border-color:var(--orange);background:var(--orange-light)}
 .inc-btn.sel-biological{border-color:var(--red);background:var(--red-light)}
 .inc-btn.sel-chemical{border-color:var(--yellow);background:var(--yellow-bg)}
-.examples-toggle{display:flex;align-items:center;gap:6px;background:var(--slate-light);border:none;border-radius:var(--radius-xs);padding:7px 11px;font-size:12px;font-weight:700;color:var(--slate-mid);cursor:pointer;font-family:var(--font);margin-bottom:6px;width:100%}
+.examples-toggle{display:flex;align-items:center;gap:6px;background:var(--slate-light);border:none;border-radius:var(--radius-xs);padding:7px 11px;font-size:14px;font-weight:700;color:var(--slate-mid);cursor:pointer;font-family:var(--font);margin-bottom:6px;width:100%}
 .examples-body{background:var(--slate-light);border-radius:var(--radius-xs);padding:10px 12px;margin-bottom:8px;display:none}
 .examples-body.open{display:block}
-.example-chip{display:inline-block;background:#fff;border:1px solid var(--slate-border);border-radius:20px;padding:4px 10px;font-size:12px;font-weight:600;color:var(--slate);margin:3px 3px 3px 0}
+.example-chip{display:inline-block;background:#fff;border:1px solid var(--slate-border);border-radius:20px;padding:4px 10px;font-size:14px;font-weight:600;color:var(--slate);margin:3px 3px 3px 0}
 .dt-card{background:#fff;border-radius:var(--radius);border-left:4px solid var(--slate-border);padding:13px;margin-bottom:9px;box-shadow:var(--shadow)}
 .dt-card.bloodborne{border-left-color:var(--red)}
 .dt-card.airborne{border-left-color:var(--blue)}
 .dt-card.chemical{border-left-color:var(--yellow)}
-.dt-card-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;color:var(--slate)}
+.dt-card-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;color:var(--slate)}
 .dt-q{padding:9px 0;border-bottom:1px solid var(--slate-border)}
 .dt-q:last-of-type{border-bottom:none}
-.dt-q-text{font-size:13px;line-height:1.4;color:var(--slate);margin-bottom:8px}
+.dt-q-text{font-size:15px;line-height:1.45;color:var(--slate);margin-bottom:8px}
 .dt-btns{display:flex;gap:8px}
-.dy,.dn{border:none;border-radius:7px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--font);flex:1}
+.dy,.dn{border:none;border-radius:7px;padding:11px 16px;font-size:15px;font-weight:800;cursor:pointer;font-family:var(--font);flex:1}
 .dy{background:#fee2e2;color:var(--red)}.dy.sel{background:var(--red);color:#fff}
 .dn{background:var(--slate-light);color:var(--slate-mid)}.dn.sel{background:var(--slate);color:#fff}
-.dt-result{border-radius:var(--radius-xs);padding:10px 12px;margin-top:8px;font-size:13px;font-weight:700;display:none;line-height:1.4}
+.dt-result{border-radius:var(--radius-xs);padding:11px 13px;margin-top:8px;font-size:15px;font-weight:700;display:none;line-height:1.45}
 .dt-result.contamination{background:#fef3c7;color:#92400e;display:block}
 .dt-result.exposure{background:var(--red-light);color:var(--red-dark);display:block}
 .dt-result.safe{background:var(--green-light);color:var(--green);display:block}
-.def-box{border-radius:var(--radius-xs);padding:8px 11px;margin-top:5px;font-size:12px;line-height:1.5;display:none}
+.def-box{border-radius:var(--radius-xs);padding:8px 11px;margin-top:5px;font-size:14px;line-height:1.5;display:none}
 .def-contamination{background:#fef9c3;color:#713f12;border:1px solid #fde047;display:block}
 .def-exposure{background:var(--red-light);color:var(--red-dark);border:1px solid var(--red-mid);display:block}
-.help-btn{background:none;border:1.5px solid var(--blue);border-radius:50%;width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--blue);cursor:pointer;flex-shrink:0;margin-left:4px;vertical-align:middle}
-.tooltip-box{background:var(--blue-light);border:1px solid var(--blue);border-radius:var(--radius-xs);padding:9px 12px;font-size:12px;color:var(--blue);line-height:1.5;margin:5px 0;display:none}
+.help-btn{background:none;border:1.5px solid var(--blue);border-radius:50%;width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--blue);cursor:pointer;flex-shrink:0;margin-left:4px;vertical-align:middle}
+.tooltip-box{background:var(--blue-light);border:1px solid var(--blue);border-radius:var(--radius-xs);padding:9px 12px;font-size:14px;color:var(--blue);line-height:1.5;margin:5px 0;display:none}
 .tooltip-box.open{display:block}
 .contact-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
 .contact-btn{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;border:2px solid var(--red);border-radius:var(--radius-sm);padding:12px 8px;cursor:pointer;text-decoration:none}
 .contact-btn.priority{background:var(--red-light)}
-.contact-name{font-size:12px;font-weight:800;color:var(--slate);text-align:center}
-.contact-title-sm{font-size:10px;color:var(--slate-mid);text-align:center}
-.contact-phone{font-size:11px;font-weight:700;color:var(--red)}
+.contact-name{font-size:14px;font-weight:800;color:var(--slate);text-align:center}
+.contact-title-sm{font-size:14px;color:var(--slate-mid);text-align:center}
+.contact-phone{font-size:15px;font-weight:700;color:var(--red)}
 .stop-wrap{text-align:center;margin-bottom:12px}
 .stop-sign{width:76px;height:76px;background:var(--red);clip-path:polygon(29% 0%,71% 0%,100% 29%,100% 71%,71% 100%,29% 100%,0% 71%,0% 29%);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
-.stop-sign span{color:#fff;font-size:13px;font-weight:900;letter-spacing:1px}
+.stop-sign span{color:#fff;font-size:15px;font-weight:900;letter-spacing:1px}
 .spinner{width:28px;height:28px;border:3px solid var(--slate-border);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:28px auto}
 @keyframes spin{to{transform:rotate(360deg)}}
 .rep-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
 .rep-card-hdr{padding:10px 13px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--slate-border)}
-.type-badge{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;padding:3px 8px;border-radius:20px}
+.type-badge{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;padding:3px 8px;border-radius:20px}
 .badge-injury{background:var(--orange-light);color:var(--orange)}
 .badge-biological{background:var(--red-light);color:var(--red)}
 .badge-chemical{background:#fef3c7;color:var(--yellow)}
 .badge-vehicle{background:var(--blue-light);color:var(--blue)}
-.rep-date{font-size:11px;color:var(--slate-mid)}
+.rep-date{font-size:13px;color:var(--slate-mid)}
 .rep-body{padding:11px 13px}
-.rep-name{font-size:15px;font-weight:800;color:var(--slate);margin-bottom:2px}
-.rep-detail{font-size:12px;color:var(--slate-mid);margin-bottom:2px}
-.status-pill{display:inline-block;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px}
+.rep-name{font-size:17px;font-weight:800;color:var(--slate);margin-bottom:2px}
+.rep-detail{font-size:14px;color:var(--slate-mid);margin-bottom:2px}
+.status-pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 8px;border-radius:20px}
 .s-new{background:#fef3c7;color:#92400e}.s-reviewed{background:var(--green-light);color:var(--green)}.s-closed{background:var(--slate-light);color:var(--slate-mid)}
 .spill-green{background:#dcfce7;color:#15803d}.spill-yellow{background:#fef9c3;color:#713f12}.spill-orange{background:#ffedd5;color:#9a3412}.spill-red{background:var(--red-light);color:var(--red-dark)}
 .rep-actions{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
-.rep-btn{flex:1;padding:8px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font);border:none;min-width:58px}
+.rep-btn{flex:1;padding:9px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font);border:none;min-width:58px}
 .rep-btn-view{background:var(--blue-light);color:var(--blue)}
 .rep-btn-review{background:var(--green-light);color:var(--green);border:1.5px solid var(--green)}
 .rep-btn-close{background:var(--slate-light);color:var(--slate-mid)}
 .rep-btn-pdf{background:var(--purple-light);color:var(--purple)}
 .filter-scroll{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:11px;scrollbar-width:none}
 .filter-scroll::-webkit-scrollbar{display:none}
-.fchip{padding:6px 12px;border-radius:20px;border:1.5px solid var(--slate-border);background:#fff;font-size:11px;font-weight:700;cursor:pointer;color:var(--slate-mid);white-space:nowrap;font-family:var(--font)}
+.fchip{padding:7px 13px;border-radius:20px;border:1.5px solid var(--slate-border);background:#fff;font-size:15px;font-weight:700;cursor:pointer;color:var(--slate-mid);white-space:nowrap;font-family:var(--font)}
 .fchip.active{background:var(--red);border-color:var(--red);color:#fff}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:300;display:none;align-items:flex-end}
 .overlay.open{display:flex}
@@ -142,30 +142,30 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .sheet-handle{width:36px;height:4px;background:var(--slate-border);border-radius:2px;margin:0 auto 13px}
 .sheet-title{font-size:16px;font-weight:800;color:var(--slate);margin-bottom:13px;text-align:center}
-.frep-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--slate-mid);margin-bottom:2px}
-.frep-value{font-size:13px;color:var(--slate);font-weight:600;line-height:1.4;margin-bottom:9px}
+.frep-label{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--slate-mid);margin-bottom:2px}
+.frep-value{font-size:15px;color:var(--slate);font-weight:600;line-height:1.4;margin-bottom:9px}
 .frep-divider{height:1px;background:var(--slate-border);margin:11px 0}
-.sig-area{border:1.5px dashed var(--slate-border);border-radius:var(--radius-xs);height:55px;display:flex;align-items:center;justify-content:center;color:var(--slate-mid);font-size:12px;background:var(--slate-light);margin-top:4px}
+.sig-area{border:1.5px dashed var(--slate-border);border-radius:var(--radius-xs);height:55px;display:flex;align-items:center;justify-content:center;color:var(--slate-mid);font-size:14px;background:var(--slate-light);margin-top:4px}
 .success-inner{display:none;text-align:center;padding:36px 16px}
 .success-inner.show{display:block}
 .agree-row{display:flex;align-items:flex-start;gap:10px;background:var(--slate-light);border-radius:var(--radius-sm);padding:12px;margin-bottom:11px;cursor:pointer}
-.agree-box{width:22px;height:22px;border-radius:5px;border:2px solid var(--slate-border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px}
-.agree-row.agreed .agree-box{background:var(--green);border-color:var(--green);color:#fff}
-.agree-text{font-size:13px;color:var(--slate);line-height:1.4}
+.agree-box{width:24px;height:24px;border-radius:5px;border:2px solid #000;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:1px;background:#fff}
+.agree-row.agreed .agree-box{background:#000;border-color:#000;color:#fff}
+.agree-text{font-size:15px;color:var(--slate);line-height:1.45}
 .pin-input-lg{width:100%;border:2px solid var(--slate-border);border-radius:var(--radius-sm);padding:14px;font-size:26px;text-align:center;letter-spacing:8px;font-family:var(--font);color:var(--slate)}
 .confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:399;display:none}
 .confirm-overlay.open{display:block}
 .confirm-box{background:#fff;border-radius:var(--radius);padding:20px;margin:20px;position:fixed;top:50%;left:0;right:0;transform:translateY(-50%);z-index:400;display:none;box-shadow:var(--shadow-lg)}
 .confirm-box.open{display:block}
-.sev-banner{border-radius:var(--radius);padding:12px 15px;margin-bottom:11px;font-size:13px;font-weight:800;text-align:center}
+.sev-banner{border-radius:var(--radius);padding:12px 15px;margin-bottom:11px;font-size:15px;font-weight:800;text-align:center}
 .sevb-green{background:#dcfce7;color:#15803d;border:2px solid #86efac}
 .sevb-yellow{background:#fef9c3;color:#713f12;border:2px solid #fde047}
 .sevb-orange{background:#ffedd5;color:#9a3412;border:2px solid #fdba74}
 .sevb-red{background:var(--red-light);color:var(--red-dark);border:2px solid var(--red)}
 .vq-item{background:#fff;border-radius:var(--radius-sm);padding:12px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
-.vq-label{font-size:13px;font-weight:700;color:var(--slate);margin-bottom:8px;line-height:1.4}
-.vq-sub{font-size:11px;color:var(--slate-mid);margin-bottom:8px}
-.warning-banner{background:#fef3c7;border:1.5px solid var(--yellow-border);border-radius:var(--radius-sm);padding:10px 13px;font-size:12px;color:#78350f;line-height:1.5;margin-bottom:11px}
+.vq-label{font-size:15px;font-weight:700;color:var(--slate);margin-bottom:8px;line-height:1.4}
+.vq-sub{font-size:15px;color:var(--slate-mid);margin-bottom:8px}
+.warning-banner{background:#fef3c7;border:1.5px solid var(--yellow-border);border-radius:var(--radius-sm);padding:10px 13px;font-size:14px;color:#78350f;line-height:1.5;margin-bottom:11px}
 </style>
 </head>
 <body>
@@ -181,16 +181,16 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
       <div class="card-title">Step 1 &mdash; Select Agency</div>
       <div style="font-size:14px;font-weight:700;color:var(--slate);margin-bottom:12px">Is this an NCEMS or FD13 incident?</div>
       <div class="yn-grid">
-        <button class="yn-yes" style="font-size:15px;padding:16px" onclick="setAgency('NCEMS')">&#x1F691; NCEMS</button>
-        <button class="yn-no" style="font-size:15px;padding:16px;background:var(--blue-light);color:var(--blue);border-color:var(--blue)" onclick="setAgency('FD13')">&#x1F692; FD13</button>
+        <button class="yn-yes" style="font-size:15px;padding:16px" onclick="setAgency('NCEMS')">NCEMS</button>
+        <button class="yn-no" style="font-size:15px;padding:16px;background:var(--blue-light);color:var(--blue);border-color:var(--blue)" onclick="setAgency('FD13')">FD13</button>
       </div>
     </div>
   </div>
   <div id="splash-hosp" style="display:none">
     <div class="card">
-      <div class="card-title">&#x26A0;&#xFE0F; Before You Begin</div>
-      <div style="font-size:13px;color:var(--slate);margin-bottom:8px">Does this involve any condition needing <strong>immediate or presumed hospitalization?</strong></div>
-      <ul style="margin:0 0 10px 16px;font-size:12px;color:var(--slate-mid);line-height:1.9">
+      <div class="card-title">Before You Begin</div>
+      <div style="font-size:15px;color:var(--slate);margin-bottom:8px">Does this involve any condition needing <strong>immediate or presumed hospitalization?</strong></div>
+      <ul style="margin:0 0 10px 16px;font-size:14px;color:var(--slate-mid);line-height:1.9">
         <li>Severe respiratory distress</li>
         <li>Major cardiovascular event (heart attack, cardiac arrest)</li>
         <li>Major trauma &mdash; open fracture or internal injuries</li>
@@ -200,49 +200,49 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
         <li>Amputation or loss of an eye</li>
       </ul>
       <div class="yn-grid">
-        <button class="yn-yes" onclick="hospYes()">&#x1F6A8; YES</button>
-        <button class="yn-no" onclick="hospNo()">&#x2705; NO</button>
+        <button class="yn-yes" onclick="hospYes()">YES</button>
+        <button class="yn-no" onclick="hospNo()">NO</button>
       </div>
     </div>
     <div id="notify-panel" style="display:none">
       <div class="stop-wrap">
         <div class="stop-sign"><span>STOP</span></div>
         <div style="font-size:15px;font-weight:800;color:var(--red-dark);margin-bottom:4px">Notify Your Supervisor Immediately</div>
-        <div style="font-size:12px;color:var(--slate-mid)">Call one of the following now:</div>
+        <div style="font-size:14px;color:var(--slate-mid)">Call one of the following now:</div>
       </div>
       <div id="contact-priority-grid"></div>
       <div id="contact-secondary-grid" class="contact-grid-2" style="margin-top:8px"></div>
       <div style="margin-top:14px;font-size:14px;font-weight:700;color:var(--slate);text-align:center">Has this been accomplished?</div>
       <div class="yn-grid">
-        <button class="btn-green" onclick="hospNotified()">&#x2705; YES &mdash; Proceed</button>
-        <button class="yn-no" onclick="alert('Please contact your supervisor before continuing.')">&#x274C; NO</button>
+        <button class="btn-green" onclick="hospNotified()">YES &mdash; Proceed</button>
+        <button class="yn-no" onclick="alert('Please contact your supervisor before continuing.')">NO</button>
       </div>
-      <div class="alert alert-warning" style="margin-top:10px"><span>&#x2139;&#xFE0F;</span><div>The on-duty Chief Officer must complete all paperwork and notify L&amp;I within <strong>8 hours</strong> of any serious injury or hospitalization.</div></div>
+      <div class="alert alert-warning" style="margin-top:10px"><div>The on-duty Chief Officer must complete all paperwork and notify L&amp;I within <strong>8 hours</strong> of any serious injury or hospitalization.</div></div>
     </div>
     <div id="proceed-wrap" style="display:none">
-      <div class="alert alert-info"><span>&#x2139;&#xFE0F;</span><div>All minor reporting events may use the Exposure Report as a Record Only process and may be upgraded to a Workers' Compensation Claim at any time.</div></div>
+      <div class="alert alert-info"><div>All minor reporting events may use the Exposure Report as a Record Only process and may be upgraded to a Workers' Compensation Claim at any time.</div></div>
       <button class="btn-primary" onclick="startReport()">Begin Incident Report &rarr;</button>
     </div>
   </div>
   <div id="report-main" style="display:none">
     <div class="success-inner" id="success-screen">
-      <div style="font-size:56px;margin-bottom:12px">&#x2705;</div>
+      <div style="font-size:56px;margin-bottom:12px"></div>
       <div style="font-size:20px;font-weight:800;margin-bottom:7px">Report Submitted</div>
-      <div style="font-size:13px;color:var(--slate-mid);margin-bottom:14px">Your incident report has been saved and the on-duty chief has been notified.</div>
-      <div style="background:var(--slate-light);border-radius:var(--radius-sm);padding:12px;margin:14px 0;font-size:12px;color:var(--slate-mid)">Reference Number<br><strong id="success-ref-num" style="display:block;font-size:18px;color:var(--slate);letter-spacing:1.5px;margin-top:3px">&ndash;</strong></div>
-      <div class="alert alert-info" style="text-align:left"><span>&#x1F4CB;</span><div>If seeking medical treatment, obtain an <strong>Activity Prescription Form (APF)</strong> from your provider and return to the Chief as soon as possible.</div></div>
-      <div class="alert alert-warning" style="text-align:left;margin-top:8px"><span>&#x23F1;&#xFE0F;</span><div>If signs or symptoms appear within <strong>48 hours</strong>, immediately contact your on-duty BC.</div></div>
+      <div style="font-size:15px;color:var(--slate-mid);margin-bottom:14px">Your incident report has been saved and the on-duty chief has been notified.</div>
+      <div style="background:var(--slate-light);border-radius:var(--radius-sm);padding:12px;margin:14px 0;font-size:14px;color:var(--slate-mid)">Reference Number<br><strong id="success-ref-num" style="display:block;font-size:18px;color:var(--slate);letter-spacing:1.5px;margin-top:3px">&ndash;</strong></div>
+      <div class="alert alert-info" style="text-align:left"><div>If seeking medical treatment, obtain an <strong>Activity Prescription Form (APF)</strong> from your provider and return to the Chief as soon as possible.</div></div>
+      <div class="alert alert-warning" style="text-align:left;margin-top:8px"><div>If signs or symptoms appear within <strong>48 hours</strong>, immediately contact your on-duty BC.</div></div>
       <button class="btn-primary" style="margin-top:14px" onclick="resetAll()">Start New Report</button>
     </div>
     <div id="form-body">
       <div class="sec-label">Step 1 &mdash; What happened?</div>
       <div class="inc-grid-3">
-        <button class="inc-btn" id="btn-injury" onclick="selectType('injury')"><span class="i-icon">&#x1F9B4;</span><span class="i-label">Injury / Illness</span></button>
-        <button class="inc-btn" id="btn-biological" onclick="selectType('biological')"><span class="i-icon">&#x1F9EB;</span><span class="i-label">Biological Exposure</span></button>
-        <button class="inc-btn" id="btn-chemical" onclick="selectType('chemical')"><span class="i-icon">&#x2697;&#xFE0F;</span><span class="i-label">Chemical Exposure</span></button>
+        <button class="inc-btn" id="btn-injury" onclick="selectType('injury')"><span class="i-label">Injury / Illness</span></button>
+        <button class="inc-btn" id="btn-biological" onclick="selectType('biological')"><span class="i-label">Biological Exposure</span></button>
+        <button class="inc-btn" id="btn-chemical" onclick="selectType('chemical')"><span class="i-label">Chemical Exposure</span></button>
       </div>
       <div id="examples-section" style="display:none">
-        <button class="examples-toggle" onclick="toggleEx()"><span>&#x1F4CB;</span><span id="ex-lbl">Show Examples</span><span style="margin-left:auto">&#x25BE;</span></button>
+        <button class="examples-toggle" onclick="toggleEx()"><span id="ex-lbl">Show Examples</span><span style="margin-left:auto">&#x25BE;</span></button>
         <div class="examples-body" id="examples-body"></div>
       </div>
       <div id="step2-wrap" style="display:none">
@@ -264,18 +264,18 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
         </div>
         <div id="dt-biological" style="display:none">
           <div class="dt-card" style="border-left-color:var(--purple)">
-            <div class="dt-card-title">&#x2139;&#xFE0F; Exposure vs. Contamination <button class="help-btn" onclick="toggleTT('contam-tt')">?</button></div>
+            <div class="dt-card-title">Exposure vs. Contamination <button class="help-btn" onclick="toggleTT('contam-tt')">?</button></div>
             <div class="tooltip-box open" id="contam-tt"><strong>Contamination:</strong> Contact with a biological substance that does NOT meet exposure criteria. Requires decontamination and documentation.<br><br><strong>Exposure:</strong> Contact with blood, body fluids, or airborne pathogens capable of transmitting disease. Requires the full Biological Exposure Procedure immediately.</div>
           </div>
           <div class="dt-card bloodborne">
-            <div class="dt-card-title">&#x1FA78; Bloodborne &mdash; Contamination Questions</div>
+            <div class="dt-card-title">Bloodborne &mdash; Contamination Questions</div>
             <div class="dt-q" id="bbc-q0"><div class="dt-q-text">Did blood or body fluids splash onto your <strong>intact skin</strong>?</div><div class="dt-btns"><button class="dy" onclick="setBBCQ(0,true)">YES</button><button class="dn" onclick="setBBCQ(0,false)">NO</button></div><div class="def-box" id="bbc-d0"></div></div>
             <div class="dt-q" id="bbc-q1"><div class="dt-q-text">Did blood or body fluids <strong>soak through</strong> your clothing?</div><div class="dt-btns"><button class="dy" onclick="setBBCQ(1,true)">YES</button><button class="dn" onclick="setBBCQ(1,false)">NO</button></div><div class="def-box" id="bbc-d1"></div></div>
             <div class="dt-q" id="bbc-q2"><div class="dt-q-text">Did blood or body fluids land on your <strong>glasses or mask</strong>?</div><div class="dt-btns"><button class="dy" onclick="setBBCQ(2,true)">YES</button><button class="dn" onclick="setBBCQ(2,false)">NO</button></div><div class="def-box" id="bbc-d2"></div></div>
             <div class="dt-result" id="bbc-result"></div>
           </div>
           <div class="dt-card bloodborne">
-            <div class="dt-card-title">&#x1FA78; Bloodborne &mdash; Exposure Questions</div>
+            <div class="dt-card-title">Bloodborne &mdash; Exposure Questions</div>
             <div class="dt-q" id="bbe-q0"><div class="dt-q-text">Did visible blood splash into your <strong>eyes, mouth, or nose</strong>?</div><div class="dt-btns"><button class="dy" onclick="setBBEQ(0,true)">YES</button><button class="dn" onclick="setBBEQ(0,false)">NO</button></div><div class="def-box" id="bbe-d0"></div></div>
             <div class="dt-q" id="bbe-q1"><div class="dt-q-text">Did visible blood get into an <strong>open wound</strong> (weeping or bleeding)?</div><div class="dt-btns"><button class="dy" onclick="setBBEQ(1,true)">YES</button><button class="dn" onclick="setBBEQ(1,false)">NO</button></div><div class="def-box" id="bbe-d1"></div></div>
             <div class="dt-q" id="bbe-q2"><div class="dt-q-text">Were you <strong>punctured by a needle</strong> contaminated with blood?</div><div class="dt-btns"><button class="dy" onclick="setBBEQ(2,true)">YES</button><button class="dn" onclick="setBBEQ(2,false)">NO</button></div><div class="def-box" id="bbe-d2"></div></div>
@@ -283,7 +283,7 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
             <div class="dt-result" id="bbe-result"></div>
           </div>
           <div class="dt-card airborne">
-            <div class="dt-card-title">&#x1F4A8; Airborne &mdash; Contamination Questions</div>
+            <div class="dt-card-title">Airborne &mdash; Contamination Questions</div>
             <div class="dt-q" id="abc-q0"><div class="dt-q-text">Did a patient cough on you <strong>while wearing PPE</strong>?</div><div class="dt-btns"><button class="dy" onclick="setABCQ(0,true)">YES</button><button class="dn" onclick="setABCQ(0,false)">NO</button></div><div class="def-box" id="abc-d0"></div></div>
             <div class="dt-q" id="abc-q1"><div class="dt-q-text">Did you physically carry a patient <strong>while wearing PPE</strong>?</div><div class="dt-btns"><button class="dy" onclick="setABCQ(1,true)">YES</button><button class="dn" onclick="setABCQ(1,false)">NO</button></div><div class="def-box" id="abc-d1"></div></div>
             <div class="dt-q" id="abc-q2"><div class="dt-q-text">Did you get <strong>mucosal secretions</strong> on your skin?</div><div class="dt-btns"><button class="dy" onclick="setABCQ(2,true)">YES</button><button class="dn" onclick="setABCQ(2,false)">NO</button></div><div class="def-box" id="abc-d2"></div></div>
@@ -291,33 +291,33 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
             <div class="dt-result" id="abc-result"></div>
           </div>
           <div class="dt-card airborne">
-            <div class="dt-card-title">&#x1F4A8; Airborne &mdash; Exposure Questions</div>
+            <div class="dt-card-title">Airborne &mdash; Exposure Questions</div>
             <div class="dt-q" id="abe-q0"><div class="dt-q-text">Did a patient cough or sneeze in your <strong>unprotected face</strong>?</div><div class="dt-btns"><button class="dy" onclick="setABEQ(0,true)">YES</button><button class="dn" onclick="setABEQ(0,false)">NO</button></div><div class="def-box" id="abe-d0"></div></div>
             <div class="dt-q" id="abe-q1"><div class="dt-q-text">Did you spend time in an <strong>enclosed, unventilated area</strong> with the patient without PPE?</div><div class="dt-btns"><button class="dy" onclick="setABEQ(1,true)">YES</button><button class="dn" onclick="setABEQ(1,false)">NO</button></div><div class="def-box" id="abe-d1"></div></div>
             <div class="dt-q" id="abe-q2"><div class="dt-q-text">Did you perform <strong>airway procedures or respiratory treatments</strong> without PPE?</div><div class="dt-btns"><button class="dy" onclick="setABEQ(2,true)">YES</button><button class="dn" onclick="setABEQ(2,false)">NO</button></div><div class="def-box" id="abe-d2"></div></div>
             <div class="dt-result" id="abe-result"></div>
           </div>
           <div class="dt-result" id="bio-overall" style="margin-bottom:10px"></div>
-          <div class="alert alert-warning"><span>&#x23F1;&#xFE0F;</span><div>If signs or symptoms appear within <strong>10 days</strong> of any biological contact, immediately contact your on-duty BC.</div></div>
+          <div class="alert alert-warning"><div>If signs or symptoms appear within <strong>10 days</strong> of any biological contact, immediately contact your on-duty BC.</div></div>
         </div>
         <div id="dt-chemical" style="display:none">
           <div class="dt-card chemical">
-            <div class="dt-card-title">&#x2697;&#xFE0F; Chemical Exposure &mdash; Answer All Questions</div>
-            <div class="alert alert-info" style="margin-bottom:8px"><span>&#x1F4D6;</span><div>Hazardous substances include cleaning products, disinfectants, fuels, fire suppression agents, diesel exhaust, smoke, or any unknown substance on scene or at station.</div></div>
+            <div class="dt-card-title">Chemical Exposure &mdash; Answer All Questions</div>
+            <div class="alert alert-info" style="margin-bottom:8px"><div>Hazardous substances include cleaning products, disinfectants, fuels, fire suppression agents, diesel exhaust, smoke, or any unknown substance on scene or at station.</div></div>
             <div class="dt-q"><div class="dt-q-text">Was a hazardous substance <strong>inhaled</strong>?</div><div class="dt-btns"><button class="dy" onclick="setChemQ(0,true)">YES</button><button class="dn" onclick="setChemQ(0,false)">NO</button></div></div>
             <div class="dt-q"><div class="dt-q-text">Was a hazardous substance <strong>absorbed through or in contact with skin or mucous membrane</strong>?</div><div class="dt-btns"><button class="dy" onclick="setChemQ(1,true)">YES</button><button class="dn" onclick="setChemQ(1,false)">NO</button></div></div>
             <div class="dt-q"><div class="dt-q-text">Was a hazardous substance <strong>ingested</strong>?</div><div class="dt-btns"><button class="dy" onclick="setChemQ(2,true)">YES</button><button class="dn" onclick="setChemQ(2,false)">NO</button></div></div>
             <div class="dt-q"><div class="dt-q-text">Are you displaying <strong>signs or symptoms</strong> consistent with a hazardous substance exposure?</div><div class="dt-btns"><button class="dy" onclick="setChemQ(3,true)">YES</button><button class="dn" onclick="setChemQ(3,false)">NO</button></div></div>
             <div class="dt-q" id="chem-48-row" style="display:none"><div class="dt-q-text">Were these signs or symptoms noticed <strong>within 48 hours</strong> of the potential exposure?</div><div class="dt-btns"><button class="dy" onclick="setChem48(true)">YES</button><button class="dn" onclick="setChem48(false)">NO</button></div></div>
             <div class="dt-result" id="chem-result" style="margin-top:8px"></div>
-            <div id="chem-allno-msg" class="alert alert-info" style="display:none;margin-top:8px"><span>&#x2139;&#xFE0F;</span><div>All answers are No. If any signs or symptoms are noted within 48 hours of this event, please create a new incident report immediately.</div></div>
+            <div id="chem-allno-msg" class="alert alert-info" style="display:none;margin-top:8px"><div>All answers are No. If any signs or symptoms are noted within 48 hours of this event, please create a new incident report immediately.</div></div>
           </div>
         </div>
       </div>
       <div id="step3-wrap" style="display:none">
         <div class="sec-label">Step 3 &mdash; Complete the Incident Report</div>
-        <div id="inj-no-med-note" style="display:none"><div class="alert-green" style="margin-bottom:10px">&#x2705; No medical attention required &mdash; filed as Record Only. You may upgrade to a Workers' Compensation Claim at any time.</div></div>
-        <div id="inj-hosp-note" style="display:none"><div class="alert alert-danger"><span>&#x1F6A8;</span><div>Possible hospitalization indicated &mdash; notify the On-Duty Chief immediately. L&amp;I must be notified within 8 hours.</div></div></div>
+        <div id="inj-no-med-note" style="display:none"><div class="alert-green" style="margin-bottom:10px">No medical attention required &mdash; filed as Record Only. You may upgrade to a Workers' Compensation Claim at any time.</div></div>
+        <div id="inj-hosp-note" style="display:none"><div class="alert alert-danger"><div>Possible hospitalization indicated &mdash; notify the On-Duty Chief immediately. L&amp;I must be notified within 8 hours.</div></div></div>
         <div class="card">
           <div class="card-title">Employee &amp; Report Information</div>
           <div class="form-row"><label class="form-label">Agency</label><input class="form-input" id="f-agency" type="text" readonly></div>
@@ -336,7 +336,7 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
           <div class="card">
             <div class="card-title">Will You Seek Medical Treatment? <span class="req">*</span></div>
             <div class="yn-grid" style="margin:0"><button class="yn-yes" id="treat-y" onclick="setTreatment(true)" style="font-size:14px;padding:13px">YES</button><button class="yn-no" id="treat-n" onclick="setTreatment(false)" style="font-size:14px;padding:13px">NO / Not Now</button></div>
-            <div id="treat-contact-wrap" style="display:none;margin-top:10px"><div class="alert alert-info"><span>&#x1F4DE;</span><div>Contact your on-duty BC or Chief to coordinate medical evaluation:</div></div><div id="treat-contact-grid"></div></div>
+            <div id="treat-contact-wrap" style="display:none;margin-top:10px"><div class="alert alert-info"><div>Contact your on-duty BC or Chief to coordinate medical evaluation:</div></div><div id="treat-contact-grid"></div></div>
           </div>
           <div class="card"><div class="card-title">Nature of Injury / Illness</div><div class="check-grid" id="nature-grid"></div></div>
           <div class="card"><div class="card-title">Activity at Time of Incident</div><div class="check-grid" id="activity-grid"></div></div>
@@ -392,7 +392,7 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
         </div>
         <div class="card"><div class="form-row" style="margin-bottom:0"><label class="form-label">Witnesses</label><input class="form-input" id="f-witnesses" type="text" placeholder="Names, or write 'None'"></div></div>
         <div class="agree-row" id="agree-row" onclick="toggleAgree()"><div class="agree-box" id="agree-box"></div><div class="agree-text">I certify that the information in this report is <strong><u>true and complete</u></strong> to the best of my knowledge. I understand I will be asked to provide a signature on the completed form.</div></div>
-        <div id="submit-error" class="alert alert-danger" style="display:none"><span>&#x26A0;&#xFE0F;</span><div id="submit-error-text">Please complete all required fields.</div></div>
+        <div id="submit-error" class="alert alert-danger" style="display:none"><div id="submit-error-text">Please complete all required fields.</div></div>
         <button class="btn-primary" id="submit-btn" onclick="submitReport()">Submit Report</button>
         <div style="height:10px"></div>
       </div>
@@ -402,17 +402,17 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
 <!-- VEHICLE TAB -->
 <div id="tab-vehicle" class="tab-page">
   <div id="veh-splash">
-    <div class="warning-banner">&#x26A0;&#xFE0F; <strong>This report is for internal safety, operational review, risk management, and administrative follow-up. Personnel shall provide factual information only.</strong></div>
+    <div class="warning-banner"><strong>This report is for internal safety, operational review, risk management, and administrative follow-up. Personnel shall provide factual information only.</strong></div>
     <div class="card" style="border-left:4px solid var(--red)">
-      <div style="font-size:13px;font-weight:700;color:var(--slate);margin-bottom:8px">Before continuing:</div>
-      <ul style="font-size:12px;color:var(--slate-mid);line-height:1.9;margin-left:16px">
+      <div style="font-size:15px;font-weight:700;color:var(--slate);margin-bottom:8px">Before continuing:</div>
+      <ul style="font-size:14px;color:var(--slate-mid);line-height:1.9;margin-left:16px">
         <li>Ensure scene safety</li><li>Request additional resources if needed</li>
         <li>Provide patient care priorities</li><li>Notify supervisor / BC immediately</li>
         <li><strong>Do not speculate or admit fault</strong></li>
       </ul>
     </div>
     <div class="agree-row" id="veh-agree-row" onclick="toggleVehAgree()"><div class="agree-box" id="veh-agree-box"></div><div class="agree-text"><strong><u>I understand this report requires factual information only.</u></strong> I will not admit fault, assign blame, speculate, or discuss liability.</div></div>
-    <div id="veh-agree-error" class="alert alert-danger" style="display:none"><span>&#x26A0;&#xFE0F;</span><div>You must acknowledge the statement above before continuing.</div></div>
+    <div id="veh-agree-error" class="alert alert-danger" style="display:none"><div>You must acknowledge the statement above before continuing.</div></div>
     <button class="btn-primary" onclick="startVehAssessment()">Begin Vehicle Incident Assessment &rarr;</button>
   </div>
   <div id="veh-assessment" style="display:none">
@@ -427,9 +427,9 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
     <div class="vq-item"><div class="vq-label">7. Did the incident occur while backing? <span class="req">*</span></div><div class="yn-grid"><button class="yn-yes" id="vq7y" onclick="setVQ(7,true)">YES</button><button class="yn-no" id="vq7n" onclick="setVQ(7,false)">NO</button></div></div>
     <div class="vq-item"><div class="vq-label">8. Was a spotter used? <span class="req">*</span></div><div class="yn-grid"><button class="yn-yes" id="vq8y" onclick="setVQ(8,true)">YES</button><button class="yn-no" id="vq8n" onclick="setVQ(8,false)">NO</button></div></div>
     <div class="vq-item"><div class="vq-label">9. Was there contact with another vehicle or object? (or near miss only) <span class="req">*</span></div><div class="yn-grid"><button class="yn-yes" id="vq9y" onclick="setVQ(9,true)">YES</button><button class="yn-no" id="vq9n" onclick="setVQ(9,false)">NO / Near Miss</button></div></div>
-    <div class="vq-item"><div class="vq-label">10. Has the Battalion Chief been notified? <span class="req">*</span></div><div class="yn-grid"><button class="yn-yes" id="vq10y" onclick="setVQ(10,true)">YES</button><button class="yn-no" id="vq10n" onclick="setVQ(10,false)">NO</button></div><div id="vq10-sub" style="display:none;margin-top:8px"><div class="alert alert-danger"><span>&#x1F4DE;</span><div>Contact your BC now before completing this report.</div></div><div id="veh-contact-grid" class="contact-grid-2"></div></div></div>
+    <div class="vq-item"><div class="vq-label">10. Has a Chief Officer been notified? <span class="req">*</span></div><div class="yn-grid"><button class="yn-yes" id="vq10y" onclick="setVQ(10,true)">YES</button><button class="yn-no" id="vq10n" onclick="setVQ(10,false)">NO</button></div><div id="vq10-sub" style="display:none;margin-top:8px"><div class="alert alert-danger"><div>Contact a Chief Officer now before completing this report.</div></div><div id="veh-contact-grid" class="contact-grid-2"></div></div></div>
     <div class="vq-item"><div class="vq-label">11. Does this incident require immediate removal from service? <span class="req">*</span></div><div class="yn-grid"><button class="yn-yes" id="vq11y" onclick="setVQ(11,true)">YES</button><button class="yn-no" id="vq11n" onclick="setVQ(11,false)">NO</button></div></div>
-    <div id="veh-mandatory-flags" style="display:none"><div class="alert alert-danger"><span>&#x1F6A8;</span><div id="mandatory-flag-text"></div></div></div>
+    <div id="veh-mandatory-flags" style="display:none"><div class="alert alert-danger"><div id="mandatory-flag-text"></div></div></div>
     <button class="btn-primary" onclick="startVehForm()" id="veh-proceed-btn" style="display:none;margin-top:8px">Continue to Full Report &rarr;</button>
   </div>
   <div id="veh-form" style="display:none">
@@ -481,8 +481,8 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
       </div>
     </div>
     <div class="card" style="border-left:4px solid var(--orange)">
-      <div class="card-title" style="color:var(--orange)">&#x1F4F7; Photo Documentation</div>
-      <div class="alert alert-warning" style="margin-bottom:0"><span>&#x1F4F1;</span><div><strong>Take photos using your agency-issued phone only.</strong> Photograph all vehicle damage, scene conditions, and relevant evidence before the scene is cleared. Submit photos separately to your BC.</div></div>
+      <div class="card-title" style="color:var(--orange)">Photo Documentation</div>
+      <div class="alert alert-warning" style="margin-bottom:0"><div><strong>Take photos using your agency-issued phone only.</strong> Photograph all vehicle damage, scene conditions, and relevant evidence before the scene is cleared. Submit photos separately to your BC.</div></div>
     </div>
     <div class="card">
       <div class="card-title">Factual Narrative <span class="req">*</span></div>
@@ -508,16 +508,16 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
       <div class="form-row" style="margin-bottom:0"><label class="form-label">Final Notes</label><textarea class="form-textarea" id="vf-final-notes" style="min-height:60px" placeholder="Final supervisor notes..."></textarea></div>
     </div>
     <div class="agree-row" id="veh-final-agree-row" onclick="toggleVehFinalAgree()"><div class="agree-box" id="veh-final-agree-box"></div><div class="agree-text">I certify that the information in this vehicle incident report is <strong><u>true and factual</u></strong>. I have not speculated, admitted fault, or assigned blame.</div></div>
-    <div id="veh-submit-error" class="alert alert-danger" style="display:none"><span>&#x26A0;&#xFE0F;</span><div id="veh-error-text">Please complete all required fields.</div></div>
+    <div id="veh-submit-error" class="alert alert-danger" style="display:none"><div id="veh-error-text">Please complete all required fields.</div></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px"><button class="btn-primary" style="flex:2" onclick="submitVehicleReport()">Submit Report</button><button class="btn-sm" style="flex:1;background:var(--purple-light);color:var(--purple)" onclick="exportVehJSON()">Export JSON</button></div>
     <button class="btn-outline" onclick="printVehReport()">Print / PDF Report</button>
     <div style="height:10px"></div>
   </div>
   <div id="veh-success" class="success-inner" style="text-align:center;padding:36px 16px">
-    <div style="font-size:56px;margin-bottom:12px">&#x1F692;</div>
+    <div style="font-size:56px;margin-bottom:12px"></div>
     <div style="font-size:19px;font-weight:800;margin-bottom:7px">Vehicle Report Submitted</div>
-    <div style="font-size:13px;color:var(--slate-mid);margin-bottom:14px">Report saved. The on-duty BC has been notified.</div>
-    <div style="background:var(--slate-light);border-radius:var(--radius-sm);padding:12px;margin:14px 0;font-size:12px;color:var(--slate-mid)">Reference Number<br><strong id="veh-success-ref" style="display:block;font-size:18px;color:var(--slate);letter-spacing:1.5px;margin-top:3px">&ndash;</strong></div>
+    <div style="font-size:15px;color:var(--slate-mid);margin-bottom:14px">Report saved. The on-duty BC has been notified.</div>
+    <div style="background:var(--slate-light);border-radius:var(--radius-sm);padding:12px;margin:14px 0;font-size:14px;color:var(--slate-mid)">Reference Number<br><strong id="veh-success-ref" style="display:block;font-size:18px;color:var(--slate);letter-spacing:1.5px;margin-top:3px">&ndash;</strong></div>
     <button class="btn-primary" onclick="resetVeh()">Start New Vehicle Report</button>
   </div>
 </div>
@@ -525,11 +525,11 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
 <div id="tab-reports" class="tab-page">
   <div id="reports-locked">
     <div style="text-align:center;padding:44px 16px">
-      <div style="font-size:44px;margin-bottom:10px">&#x1F512;</div>
+      <div style="font-size:44px;margin-bottom:10px"></div>
       <div style="font-size:15px;font-weight:700;margin-bottom:6px">Chief / BC Access</div>
-      <p style="font-size:13px;color:var(--slate-mid);margin-bottom:14px">Enter your PIN to view submitted reports.</p>
+      <p style="font-size:15px;color:var(--slate-mid);margin-bottom:14px">Enter your PIN to view submitted reports.</p>
       <input class="pin-input-lg" id="pin-input" type="password" inputmode="numeric" maxlength="4" placeholder="&bull;&bull;&bull;&bull;">
-      <div id="pin-error" class="alert alert-danger" style="display:none;margin-top:8px"><span>&#x26A0;&#xFE0F;</span><div>Incorrect PIN.</div></div>
+      <div id="pin-error" class="alert alert-danger" style="display:none;margin-top:8px"><div>Incorrect PIN.</div></div>
       <button class="btn-primary" style="margin-top:12px" onclick="verifyPin()">Unlock Reports</button>
     </div>
   </div>
@@ -554,12 +554,12 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
   </div>
   <div class="card">
     <div class="card-title">Google Maps Address Autocomplete</div>
-    <div class="alert alert-info" style="margin-bottom:8px"><span>&#x2139;&#xFE0F;</span><div>Enter your Google Maps API key to enable address autocomplete on location fields.</div></div>
+    <div class="alert alert-info" style="margin-bottom:8px"><div>Enter your Google Maps API key to enable address autocomplete on location fields.</div></div>
     <div class="form-row" style="margin-bottom:0"><label class="form-label">Google Maps API Key</label><input class="form-input" id="s-gmap-key" type="text" placeholder="AIza..."></div>
   </div>
   <div class="card">
     <div class="card-title">Email Notifications (EmailJS)</div>
-    <div class="alert alert-info" style="margin-bottom:8px"><span>&#x2139;&#xFE0F;</span><div>Set up a free account at emailjs.com to enable email alerts.</div></div>
+    <div class="alert alert-info" style="margin-bottom:8px"><div>Set up a free account at emailjs.com to enable email alerts.</div></div>
     <div class="form-row"><label class="form-label">EmailJS Service ID</label><input class="form-input" id="s-ejs-svc" type="text" placeholder="service_xxxxxx"></div>
     <div class="form-row"><label class="form-label">EmailJS Template ID</label><input class="form-input" id="s-ejs-tpl" type="text" placeholder="template_xxxxxx"></div>
     <div class="form-row"><label class="form-label">EmailJS Public Key</label><input class="form-input" id="s-ejs-key" type="text" placeholder="Public key"></div>
@@ -570,15 +570,15 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
     <div class="form-row" style="margin-bottom:0"><input class="pin-input-lg" id="s-pin" type="password" inputmode="numeric" maxlength="4" placeholder="4-digit PIN" style="font-size:22px;letter-spacing:6px;padding:11px"></div>
   </div>
   <button class="btn-primary" onclick="saveSettings()">Save Settings</button>
-  <div id="settings-saved" class="alert alert-success" style="display:none;margin-top:10px"><span>&#x2705;</span><div>Settings saved successfully.</div></div>
+  <div id="settings-saved" class="alert alert-success" style="display:none;margin-top:10px"><div>Settings saved successfully.</div></div>
   <div class="card" style="margin-top:13px">
     <div class="card-title">About</div>
     <div style="text-align:center;padding:8px 0 12px">
       <div style="font-size:20px;font-weight:900;color:var(--red)">NCEMS &middot; FD13</div>
       <div style="height:2px;background:var(--red);width:60px;margin:6px auto"></div>
-      <div style="font-size:10px;letter-spacing:2.5px;color:var(--slate-mid);text-transform:uppercase">On-Duty Incident Report</div>
+      <div style="font-size:12px;letter-spacing:2.5px;color:var(--slate-mid);text-transform:uppercase">On-Duty Incident Report</div>
     </div>
-    <div style="font-size:13px;color:var(--slate-mid);line-height:2">
+    <div style="font-size:15px;color:var(--slate-mid);line-height:2">
       <div><strong>Version:</strong> 2.0</div>
       <div><strong>Created by:</strong> D. Boyce</div>
       <div><strong>Organization:</strong> North Country EMS / Clark Fire District 13</div>
@@ -590,14 +590,15 @@ body{font-family:var(--font);background:#eef2f7;color:var(--slate);min-height:10
 </div>
 </div><!-- /content -->
 <nav id="bottom-nav">
-  <button class="nav-btn active" id="nav-report" onclick="showTab('report')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span class="nav-label">Report</span></button>
-  <button class="nav-btn" id="nav-vehicle" onclick="showTab('vehicle')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 4v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span class="nav-label">Vehicle</span></button>
-  <button class="nav-btn" id="nav-reports" onclick="showTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span class="nav-label">Reports</span></button>
-  <button class="nav-btn" id="nav-settings" onclick="showTab('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-label">Settings</span></button>
+  <button class="nav-btn active" id="nav-report" onclick="showTab('report')"><span class="nav-label">Report</span></button>
+  <button class="nav-btn" id="nav-vehicle" onclick="showTab('vehicle')"><span class="nav-label">Vehicle</span></button>
+  <button class="nav-btn" id="nav-reports" onclick="showTab('reports')"><span class="nav-label">Reports</span></button>
+  <button class="nav-btn" id="nav-settings" onclick="showTab('settings')" style="display:none"><span class="nav-label">Settings</span></button>
+  <button class="nav-btn" id="nav-restart" onclick="startOver()"><span class="nav-label">Start Over</span></button>
 </nav>
 <div class="overlay" id="rep-overlay" onclick="if(event.target===this)closeOverlay('rep-overlay')"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-title" id="rep-sheet-title">Incident Report</div><div id="rep-sheet-body"></div><button class="btn-primary" onclick="pdfCurrentRep()">Export / Print PDF</button><button class="btn-outline" onclick="closeOverlay('rep-overlay')">Close</button></div></div>
 <div class="confirm-overlay" id="conf-overlay" onclick="cancelConf()"></div>
-<div class="confirm-box" id="conf-box"><div style="font-size:15px;font-weight:800;margin-bottom:7px">Close this report?</div><div style="font-size:13px;color:var(--slate-mid);margin-bottom:14px;line-height:1.4">The report stays in the system but will be marked closed. You can reopen it anytime.</div><button class="btn-primary" onclick="confirmClose()" style="margin-bottom:8px">Yes, Close Report</button><button style="width:100%;background:none;border:none;color:var(--slate-mid);font-size:14px;cursor:pointer;font-family:var(--font);padding:8px" onclick="cancelConf()">Cancel</button></div>
+<div class="confirm-box" id="conf-box"><div style="font-size:15px;font-weight:800;margin-bottom:7px">Close this report?</div><div style="font-size:15px;color:var(--slate-mid);margin-bottom:14px;line-height:1.4">The report stays in the system but will be marked closed. You can reopen it anytime.</div><button class="btn-primary" onclick="confirmClose()" style="margin-bottom:8px">Yes, Close Report</button><button style="width:100%;background:none;border:none;color:var(--slate-mid);font-size:14px;cursor:pointer;font-family:var(--font);padding:8px" onclick="cancelConf()">Cancel</button></div>
 <script>
 var CONTACTS_NCEMS=[{name:'DC Andrus',title:'Duty Chief',phone:'360-448-3615',priority:true},{name:'Chief Shirley',title:'Fire Chief',phone:'360-600-8255',priority:true},{name:'BC Boyce',title:'Battalion Chief',phone:'360-355-4191'},{name:'BC Langdon',title:'Battalion Chief',phone:'360-772-5877'},{name:'BC Madler',title:'Battalion Chief',phone:'360-798-9059'}];
 var CONTACTS_FD13=[{name:'Chief Shirley',title:'Fire Chief',phone:'360-600-8255',priority:true},{name:'DC Andrus',title:'Duty Chief',phone:'360-448-3615',priority:true},{name:'BC Boyce',title:'Battalion Chief',phone:'360-355-4191'},{name:'BC Langdon',title:'Battalion Chief',phone:'360-772-5877'},{name:'BC Madler',title:'Battalion Chief',phone:'360-798-9059'}];
@@ -613,7 +614,8 @@ function loadSettingsForm(){var c=cfg();sv('s-bin-id',c.binId);sv('s-api-key',c.
 function showTab(t){var ps=document.querySelectorAll('.tab-page');for(var i=0;i<ps.length;i++)ps[i].classList.remove('active');var ns=document.querySelectorAll('.nav-btn');for(var j=0;j<ns.length;j++)ns[j].classList.remove('active');$('tab-'+t).classList.add('active');var nb=$('nav-'+t);if(nb)nb.classList.add('active');if(t==='settings')loadSettingsForm();if(t==='reports'&&reportsUnlocked)loadReports();window.scrollTo(0,0)}
 var agency='NCEMS',contacts=CONTACTS_NCEMS;
 function setAgency(a){agency=a;contacts=a==='FD13'?CONTACTS_FD13:CONTACTS_NCEMS;hd('splash-agency');sd('splash-hosp');sv('f-agency',a)}
-function buildContactGrid(priId,secId,list){var pri=list.filter(function(c){return c.priority});var sec=list.filter(function(c){return !c.priority});if(priId&&$(priId)){$(priId).innerHTML='<div class="contact-grid-2">'+pri.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn priority"><span style="font-size:20px">&#x1F4DE;</span><span class="contact-name">'+c.name+'</span><span class="contact-title-sm">'+c.title+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')+'</div>'}if(secId&&$(secId)){$(secId).innerHTML=sec.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn"><span style="font-size:18px">&#x1F4DE;</span><span class="contact-name">'+c.name+'</span><span class="contact-title-sm">'+c.title+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')}}
+function buildContactGrid(priId,secId,list){var pri=list.filter(function(c){return c.priority});var sec=list.filter(function(c){return !c.priority});if(priId&&$(priId)){$(priId).innerHTML='<div class="contact-grid-2">'+pri.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn priority"><span class="contact-name">'+c.name+'</span><span class="contact-title-sm">'+c.title+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')+'</div>'}if(secId&&$(secId)){$(secId).innerHTML=sec.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn"><span class="contact-name">'+c.name+'</span><span class="contact-title-sm">'+c.title+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')}}
+function contactGridHTML(list){return '<div class="contact-grid-2" style="margin-top:8px">'+list.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn '+(c.priority?'priority':'')+'"><span class="contact-name">'+c.name+'</span><span class="contact-title-sm">'+c.title+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')+'</div>'}
 function hospYes(){sd('notify-panel');hd('proceed-wrap');buildContactGrid('contact-priority-grid','contact-secondary-grid',contacts)}
 function hospNo(){hd('notify-panel');sd('proceed-wrap')}
 function hospNotified(){hd('notify-panel');sd('proceed-wrap')}
@@ -623,13 +625,13 @@ var incType=null;
 function selectType(t){incType=t;['injury','biological','chemical'].forEach(function(x){$('btn-'+x).className='inc-btn'});$('btn-'+t).className='inc-btn sel-'+t;sd('examples-section');$('examples-body').innerHTML=EXAMPLES[t].map(function(e){return '<span class="example-chip">'+e+'</span>'}).join('');$('examples-body').classList.add('open');$('ex-lbl').textContent='Hide Examples';sd('step2-wrap');hd('dt-injury');hd('dt-biological');hd('dt-chemical');hd('step3-wrap');resetDT();sd('dt-'+t)}
 function toggleEx(){var b=$('examples-body');b.classList.toggle('open');$('ex-lbl').textContent=b.classList.contains('open')?'Hide Examples':'Show Examples'}
 var injQ1=null,injQ2=null,bbcA=[null,null,null],bbeA=[null,null,null,null],abcA=[null,null,null,null],abeA=[null,null,null],chemA=[null,null,null,null],chem48=null,treatmentYes=null;
-var CONTAM_DEF='<strong>&#x26A0;&#xFE0F; CONTAMINATION:</strong> This contact does not meet the definition of an exposure. Complete decontamination and document below.';
-var EXP_DEF='<strong>&#x1F6A8; EXPOSURE:</strong> This contact meets the definition of an exposure and requires the Biological Exposure Procedure. Notify your BC immediately.';
+var CONTAM_DEF='<strong>CONTAMINATION:</strong> This contact does not meet the definition of an exposure. Complete decontamination and document below.';
+var EXP_DEF='<strong>EXPOSURE:</strong> This contact meets the definition of an exposure and requires the Biological Exposure Procedure. Notify your BC immediately.';
 function resetDT(){injQ1=null;injQ2=null;bbcA=[null,null,null];bbeA=[null,null,null,null];abcA=[null,null,null,null];abeA=[null,null,null];chemA=[null,null,null,null];chem48=null;treatmentYes=null;var bs=document.querySelectorAll('.dy,.dn');for(var i=0;i<bs.length;i++)bs[i].classList.remove('sel');var rs=document.querySelectorAll('.dt-result');for(var j=0;j<rs.length;j++){rs[j].className='dt-result';rs[j].style.display='none'}var ds=document.querySelectorAll('.def-box');for(var k=0;k<ds.length;k++){ds[k].className='def-box';ds[k].style.display='none';ds[k].innerHTML=''}hd('inj-q1-res');hd('inj-q2-res');hd('inj-q2-row');hd('chem-48-row');hd('chem-allno-msg')}
 function selBtn(yid,nid,val){if($(yid)){$(yid).classList.toggle('sel',val===true)}if($(nid)){$(nid).classList.toggle('sel',val===false)}}
-function setInjQ1(val){injQ1=val;selBtn('iq1y','iq1n',val);var res=$('inj-q1-res');if(val===true){res.innerHTML='<div class="alert-yellow" style="margin-top:8px">&#x26A0;&#xFE0F; All injuries and illnesses shall be evaluated individually. The On-Duty Chief Officer, in consultation with the agency member, shall determine the appropriate level of medical evaluation and treatment.</div>';sd('inj-q1-res');sd('inj-q2-row')}else{res.innerHTML='<div class="alert-green" style="margin-top:8px">&#x2705; No immediate medical attention required. Proceed to the incident report below.</div>';sd('inj-q1-res');hd('inj-q2-row');showStep3('injury')}}
-function setInjQ2(val){injQ2=val;selBtn('iq2y','iq2n',val);var res=$('inj-q2-res');if(val===false){res.innerHTML='<div class="alert alert-danger" style="margin-top:8px"><span>&#x1F6A8;</span><div>Possible hospitalization &mdash; notify the On-Duty Chief immediately. L&amp;I must be notified within 8 hours.</div></div>';sd('inj-q2-res')}else{res.innerHTML='<div class="alert-green" style="margin-top:8px">&#x2705; Outpatient treatment anticipated. Proceed to the incident report.</div>';sd('inj-q2-res')}showStep3('injury')}
-function setTreatment(val){treatmentYes=val;selBtn('treat-y','treat-n',val);if(val){sd('treat-contact-wrap');var g=$('treat-contact-grid');if(g)g.innerHTML='<div class="contact-grid-2" style="margin-top:8px">'+contacts.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn '+(c.priority?'priority':'')+'"><span style="font-size:18px">&#x1F4DE;</span><span class="contact-name">'+c.name+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')+'</div>'}else{hd('treat-contact-wrap')}}
+function setInjQ1(val){injQ1=val;selBtn('iq1y','iq1n',val);var res=$('inj-q1-res');if(val===true){res.innerHTML='<div class="alert-yellow" style="margin-top:8px">All injuries and illnesses shall be evaluated individually. The On-Duty Chief Officer, in consultation with the agency member, shall determine the appropriate level of medical evaluation and treatment.</div>';sd('inj-q1-res');sd('inj-q2-row')}else{res.innerHTML='<div class="alert-green" style="margin-top:8px">No immediate medical attention required. Proceed to the incident report below.</div>';sd('inj-q1-res');hd('inj-q2-row');showStep3('injury')}}
+function setInjQ2(val){injQ2=val;selBtn('iq2y','iq2n',val);var res=$('inj-q2-res');if(val===false){res.innerHTML='<div class="alert alert-danger" style="margin-top:8px"><div>Possible hospitalization &mdash; notify the On-Duty Chief immediately. L&amp;I must be notified within 8 hours.</div></div><div style="font-size:15px;font-weight:800;color:var(--red-dark);margin:6px 0 2px;text-align:center">Call a Chief Officer now:</div>'+contactGridHTML(contacts);sd('inj-q2-res')}else{res.innerHTML='<div class="alert-green" style="margin-top:8px">Outpatient treatment anticipated. Proceed to the incident report.</div>';sd('inj-q2-res')}showStep3('injury')}
+function setTreatment(val){treatmentYes=val;selBtn('treat-y','treat-n',val);if(val){sd('treat-contact-wrap');var g=$('treat-contact-grid');if(g)g.innerHTML='<div class="contact-grid-2" style="margin-top:8px">'+contacts.map(function(c){return '<a href="tel:'+c.phone.replace(/-/g,'')+'" class="contact-btn '+(c.priority?'priority':'')+'"><span class="contact-name">'+c.name+'</span><span class="contact-phone">'+c.phone+'</span></a>'}).join('')+'</div>'}else{hd('treat-contact-wrap')}}
 function showDef(boxId,isExp){var el=$(boxId);if(!el)return;el.innerHTML=isExp?EXP_DEF:CONTAM_DEF;el.className='def-box '+(isExp?'def-exposure':'def-contamination')}
 function hideDef(boxId){var el=$(boxId);if(el){el.style.display='none';el.className='def-box';el.innerHTML=''}}
 function qsel(qid,val){var q=$(qid);if(!q)return;var dys=q.querySelectorAll('.dy');for(var i=0;i<dys.length;i++)dys[i].classList.toggle('sel',val);var dns=q.querySelectorAll('.dn');for(var j=0;j<dns.length;j++)dns[j].classList.toggle('sel',!val)}
@@ -640,14 +642,14 @@ function setABEQ(i,val){abeA[i]=val;qsel('abe-q'+i,val);if(val)showDef('abe-d'+i
 function allAns(a){return a.every(function(q){return q!==null})}
 function anyYes(a){return a.some(function(q){return q===true})}
 function updateBioResult(){var bbcR=$('bbc-result'),bbeR=$('bbe-result'),abcR=$('abc-result'),abeR=$('abe-result'),overall=$('bio-overall');
-if(allAns(bbcA)){bbcR.style.display='block';if(anyYes(bbcA)){bbcR.className='dt-result contamination';bbcR.textContent='\u26A0\uFE0F Bloodborne contamination noted. Decontaminate.'}else{bbcR.className='dt-result safe';bbcR.textContent='\u2705 No bloodborne contamination.'}}
-if(allAns(bbeA)){bbeR.style.display='block';if(anyYes(bbeA)){bbeR.className='dt-result exposure';bbeR.textContent='\uD83D\uDEA8 BLOODBORNE EXPOSURE \u2014 Notify BC immediately.'}else{bbeR.className='dt-result safe';bbeR.textContent='\u2705 No bloodborne exposure.'}}
-if(allAns(abcA)){abcR.style.display='block';if(anyYes(abcA)){abcR.className='dt-result contamination';abcR.textContent='\u26A0\uFE0F Airborne contamination noted. Decontaminate.'}else{abcR.className='dt-result safe';abcR.textContent='\u2705 No airborne contamination.'}}
-if(allAns(abeA)){abeR.style.display='block';if(anyYes(abeA)){abeR.className='dt-result exposure';abeR.textContent='\uD83D\uDEA8 AIRBORNE EXPOSURE \u2014 Notify BC immediately.'}else{abeR.className='dt-result safe';abeR.textContent='\u2705 No airborne exposure.'}}
-if(allAns(bbcA)&&allAns(bbeA)&&allAns(abcA)&&allAns(abeA)){overall.style.display='block';var exp=anyYes(bbeA)||anyYes(abeA);var cont=anyYes(bbcA)||anyYes(abcA);if(exp){overall.className='dt-result exposure';overall.textContent='\uD83D\uDEA8 EXPOSURE CONFIRMED \u2014 BC must complete the Biological Exposure Procedure immediately.'}else if(cont){overall.className='dt-result contamination';overall.textContent='\u26A0\uFE0F CONTAMINATION \u2014 Decontaminate and complete the report below.'}else{overall.className='dt-result safe';overall.textContent='\u2705 No exposure or contamination detected. Complete report below for records.'}showStep3('biological')}}
+if(allAns(bbcA)){bbcR.style.display='block';if(anyYes(bbcA)){bbcR.className='dt-result contamination';bbcR.textContent='Bloodborne contamination noted. Decontaminate.'}else{bbcR.className='dt-result safe';bbcR.textContent='No bloodborne contamination.'}}
+if(allAns(bbeA)){bbeR.style.display='block';if(anyYes(bbeA)){bbeR.className='dt-result exposure';bbeR.textContent='BLOODBORNE EXPOSURE \u2014 BC to be notified immediately. BC must complete the Biological Exposure Assessment immediately.'}else{bbeR.className='dt-result safe';bbeR.textContent='No bloodborne exposure. Proceed to the incident report below.'}}
+if(allAns(abcA)){abcR.style.display='block';if(anyYes(abcA)){abcR.className='dt-result contamination';abcR.textContent='Airborne contamination noted. Decontaminate.'}else{abcR.className='dt-result safe';abcR.textContent='No airborne contamination.'}}
+if(allAns(abeA)){abeR.style.display='block';if(anyYes(abeA)){abeR.className='dt-result exposure';abeR.textContent='AIRBORNE EXPOSURE \u2014 BC to be notified immediately. BC must complete the Biological Exposure Assessment immediately.'}else{abeR.className='dt-result safe';abeR.textContent='No airborne exposure. Proceed to the incident report below.'}}
+if(allAns(bbcA)&&allAns(bbeA)&&allAns(abcA)&&allAns(abeA)){overall.style.display='block';var exp=anyYes(bbeA)||anyYes(abeA);var cont=anyYes(bbcA)||anyYes(abcA);if(exp){overall.className='dt-result exposure';overall.textContent='EXPOSURE CONFIRMED \u2014 BC must complete the Biological Exposure Procedure immediately.'}else if(cont){overall.className='dt-result contamination';overall.textContent='CONTAMINATION \u2014 Decontaminate and complete the report below.'}else{overall.className='dt-result safe';overall.textContent='No exposure or contamination detected. Complete report below for records.'}showStep3('biological')}}
 function setChemQ(i,val){chemA[i]=val;var qs=document.querySelectorAll('#dt-chemical .dt-q');var idx=[0,1,2,3];var q=qs[i];if(q){var dys=q.querySelectorAll('.dy');for(var a=0;a<dys.length;a++)dys[a].classList.toggle('sel',val);var dns=q.querySelectorAll('.dn');for(var b=0;b<dns.length;b++)dns[b].classList.toggle('sel',!val)}checkChemDone()}
 function setChem48(val){chem48=val;qsel('chem-48-row',val);checkChemDone()}
-function checkChemDone(){if(!allAns(chemA))return;var ay=anyYes(chemA);if(ay&&chem48===null){sd('chem-48-row');return}var cr=$('chem-result');cr.style.display='block';hd('chem-allno-msg');if(ay){cr.className='dt-result exposure';cr.textContent=chem48===true?'\uD83D\uDEA8 CHEMICAL EXPOSURE \u2014 S/S within 48 hours confirmed. Notify BC. APF required if provider seen.':'\uD83D\uDEA8 CHEMICAL EXPOSURE \u2014 Notify BC. APF required if provider seen.'}else{cr.className='dt-result safe';cr.textContent='\u2705 No chemical exposure confirmed.';hd('chem-48-row');var m=$('chem-allno-msg');if(m)m.style.display='flex'}showStep3('chemical')}
+function checkChemDone(){if(!allAns(chemA))return;var ay=anyYes(chemA);if(ay&&chem48===null){sd('chem-48-row');return}var cr=$('chem-result');cr.style.display='block';hd('chem-allno-msg');if(ay){cr.className='dt-result exposure';cr.textContent=chem48===true?'CHEMICAL EXPOSURE \u2014 S/S within 48 hours confirmed. Notify BC. APF required if provider seen.':'CHEMICAL EXPOSURE \u2014 Notify BC. APF required if provider seen.'}else{cr.className='dt-result safe';cr.textContent='No chemical exposure confirmed.';hd('chem-48-row');var m=$('chem-allno-msg');if(m)m.style.display='flex'}showStep3('chemical')}
 function showStep3(t){sd('step3-wrap');hd('inj-fields');hd('bio-fields');hd('chem-fields');hd('inj-no-med-note');hd('inj-hosp-note');if(t==='injury'){sd('inj-fields');if(injQ1===false)sd('inj-no-med-note');if(injQ2===false)sd('inj-hosp-note')}if(t==='biological')sd('bio-fields');if(t==='chemical')sd('chem-fields');setTimeout(function(){$('step3-wrap').scrollIntoView({behavior:'smooth',block:'start'})},120)}
 var NATURE=['Burn','Head Injury','Electrical Shock','Fracture','Laceration','Mental / Emotional / Stress','Noise','Soft Tissue Injury','Sprains & Strains','Thermal Extremes','Traumatic Injuries (Multiple)','Other'];
 var ACTIVITIES=['Driving - Non-emergency','Driving - Emergency','Scene Activities - Fire','Scene Activities - EMS','Training','Workout / Exercise','Station Maintenance','Office Activities','Other'];
@@ -669,11 +671,11 @@ if(incType==='biological'){r.decon=gv('f-decon');r.routeOfExposure=getChk('bio-r
 if(incType==='chemical'){r.chemName=gv('f-chem-name');r.chemOther=gv('f-chem-other');r.chemDecon=gv('f-chem-decon');r.chemSymptoms=gv('f-chem-symptoms');r.chemA=chemA;r.chem48=chem48;r.chemExposure=anyYes(chemA);r.bodyParts=getChk('chem-body-grid');r.routeOfExposure=Array.prototype.map.call(document.querySelectorAll('#chem-fields .check-item.chk input'),function(i){return i.value})}
 return r}
 var vehAnswers={},vehSeverity='green';
-function startVehAssessment(){if(!vehAgreed){sd('veh-agree-error');return}hd('veh-agree-error');hd('veh-splash');sd('veh-assessment');buildContactGrid(null,'veh-contact-grid',contacts)}
+function startVehAssessment(){if(!vehAgreed){sd('veh-agree-error');return}hd('veh-agree-error');hd('veh-splash');sd('veh-assessment');$('veh-contact-grid').innerHTML=contactGridHTML(contacts)}
 function setVQ(q,val){vehAnswers[q]=val;selBtn('vq'+q+'y','vq'+q+'n',val);if(q===1)val?sd('vq1-sub'):hd('vq1-sub');if(q===2)val?sd('vq2-sub'):hd('vq2-sub');if(q===4)val?sd('vq4-sub'):hd('vq4-sub');if(q===10)val?hd('vq10-sub'):sd('vq10-sub');calcSeverity()}
-function calcSeverity(){var a=vehAnswers;var sev='green';if(a[1]===true||a[2]===true||a[3]===true)sev='red';else if(a[11]===true||(a[6]===true&&a[5]===false))sev='orange';else if(a[6]===true&&a[5]===true)sev='yellow';vehSeverity=sev;var labels={green:'\uD83D\uDFE2 GREEN \u2014 Near Miss / No Contact / No Damage',yellow:'\uD83D\uDFE1 YELLOW \u2014 Minor Property Damage / Drivable',orange:'\uD83D\uDFE0 ORANGE \u2014 Significant Damage / Out of Service',red:'\uD83D\uDD34 RED \u2014 Injury / Patient Involved / Major Collision'};$('sev-banner-wrap').innerHTML='<div class="sev-banner sevb-'+sev+'">'+labels[sev]+'</div>';checkMandatory()}
+function calcSeverity(){var a=vehAnswers;var sev='green';if(a[1]===true||a[2]===true||a[3]===true)sev='red';else if(a[11]===true||(a[6]===true&&a[5]===false))sev='orange';else if(a[6]===true&&a[5]===true)sev='yellow';vehSeverity=sev;var labels={green:'GREEN \u2014 Near Miss / No Contact / No Damage',yellow:'YELLOW \u2014 Minor Property Damage / Drivable',orange:'ORANGE \u2014 Significant Damage / Out of Service',red:'RED \u2014 Injury / Patient Involved / Major Collision'};$('sev-banner-wrap').innerHTML='<div class="sev-banner sevb-'+sev+'">'+labels[sev]+'</div>';checkMandatory()}
 function checkMandatory(){var a=vehAnswers;var flags=[];if(a[1]===true)flags.push('Injury reported \u2014 mandatory: detailed narrative, photos (agency phone), police case number');if(a[2]===true)flags.push('Patient onboard \u2014 mandatory: CRESA run number, patient transfer documentation');if(a[3]===true)flags.push('Emergent response \u2014 mandatory: narrative, law enforcement notification');var box=$('veh-mandatory-flags');if(flags.length){box.style.display='block';$('mandatory-flag-text').innerHTML='<strong>Mandatory Requirements:</strong><ul style="margin:6px 0 0 16px;line-height:1.8">'+flags.map(function(f){return '<li>'+f+'</li>'}).join('')+'</ul>'}else{box.style.display='none'}var cnt=0;for(var k in a){if(a.hasOwnProperty(k))cnt++}if(cnt>=11)sd('veh-proceed-btn')}
-function startVehForm(){hd('veh-assessment');sd('veh-form');var n=genRefNum(agency==='FD13'?'FD-VEH':'NC-VEH');sv('vf-refnum',n);var labels={green:'\uD83D\uDFE2 GREEN \u2014 Near Miss / No Contact / No Damage',yellow:'\uD83D\uDFE1 YELLOW \u2014 Minor Property Damage / Drivable',orange:'\uD83D\uDFE0 ORANGE \u2014 Significant Damage / Out of Service',red:'\uD83D\uDD34 RED \u2014 Injury / Patient Involved / Major Collision'};$('veh-sev-top').innerHTML='<div class="sev-banner sevb-'+vehSeverity+'" style="margin-bottom:11px">'+labels[vehSeverity]+'</div>';var today=new Date().toISOString().split('T')[0];sv('vf-date',today);sv('vf-time',new Date().toTimeString().slice(0,5));if(vehAnswers[4]===true&&gv('vf-case'))sv('vf-case2',gv('vf-case'));setTimeout(function(){$('veh-form').scrollIntoView({behavior:'smooth',block:'start'})},100)}
+function startVehForm(){hd('veh-assessment');sd('veh-form');var n=genRefNum(agency==='FD13'?'FD-VEH':'NC-VEH');sv('vf-refnum',n);var labels={green:'GREEN \u2014 Near Miss / No Contact / No Damage',yellow:'YELLOW \u2014 Minor Property Damage / Drivable',orange:'ORANGE \u2014 Significant Damage / Out of Service',red:'RED \u2014 Injury / Patient Involved / Major Collision'};$('veh-sev-top').innerHTML='<div class="sev-banner sevb-'+vehSeverity+'" style="margin-bottom:11px">'+labels[vehSeverity]+'</div>';var today=new Date().toISOString().split('T')[0];sv('vf-date',today);sv('vf-time',new Date().toTimeString().slice(0,5));if(vehAnswers[4]===true&&gv('vf-case'))sv('vf-case2',gv('vf-case'));setTimeout(function(){$('veh-form').scrollIntoView({behavior:'smooth',block:'start'})},100)}
 function submitVehicleReport(){hd('veh-submit-error');if(!vehFinalAgreed){$('veh-error-text').textContent='Please check the agreement box.';sd('veh-submit-error');return}var driver=gv('vf-driver'),loc=gv('vf-location'),narrative=gv('vf-narrative');if(!driver||!loc||!narrative){$('veh-error-text').textContent='Please complete all required fields (driver, location, narrative).';sd('veh-submit-error');return}var refNum=gv('vf-refnum')||genRefNum(agency==='FD13'?'FD-VEH':'NC-VEH');var r={id:refNum,type:'vehicle',agency:agency,severity:vehSeverity,date:gv('vf-date'),time:gv('vf-time'),unit:gv('vf-unit'),driver:driver,crew:gv('vf-crew'),bcNotified:gv('vf-bc-notified'),location:loc,responseMode:getChk('veh-mode-grid'),weather:gv('vf-weather'),road:gv('vf-road'),lighting:gv('vf-lighting'),traffic:gv('vf-traffic'),speed:gv('vf-speed'),seatbelt:gv('vf-seatbelt'),spotter:gv('vf-spotter'),patientCare:gv('vf-pt-care'),incidentTypes:getChk('veh-type-grid'),narrative:narrative,notifications:getChk('veh-notif-grid'),caseNumber:gv('vf-case2'),patientOnboard:vehAnswers[2],runNumber:gv('vf-run'),injured:vehAnswers[1],emergent:vehAnswers[3],lawEnforcement:vehAnswers[4],drivable:vehAnswers[5],otherDamage:vehAnswers[6],backing:vehAnswers[7],spotterUsed:vehAnswers[8],contact:vehAnswers[9],bcNotifiedYN:vehAnswers[10],removeFromService:vehAnswers[11],finding:gv('vf-finding'),policy:gv('vf-policy'),training:gv('vf-training'),maintenance:gv('vf-maintenance'),followupWho:gv('vf-followup-who'),followupDate:gv('vf-followup-date'),finalNotes:gv('vf-final-notes'),submittedAt:Date.now(),status:'new'};saveReport(r).then(function(ok){if(ok){sendEmail(r);hd('veh-form');$('veh-success').classList.add('show');sv('veh-success-ref',r.id)}else{$('veh-error-text').textContent='Failed to save - check Settings.';sd('veh-submit-error')}})}
 function exportVehJSON(){var r={refNum:gv('vf-refnum'),driver:gv('vf-driver'),unit:gv('vf-unit'),date:gv('vf-date'),location:gv('vf-location'),severity:vehSeverity,narrative:gv('vf-narrative')};var blob=new Blob([JSON.stringify(r,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vehicle-incident-'+(gv('vf-refnum')||Date.now())+'.json';a.click()}
 function resetVeh(){vehAnswers={};vehAgreed=false;vehFinalAgreed=false;vehSeverity='green';$('veh-success').classList.remove('show');hd('veh-form');hd('veh-assessment');sd('veh-splash');$('veh-agree-row').classList.remove('agreed');$('veh-agree-box').textContent='';$('veh-proceed-btn').style.display='none';var ck=document.querySelectorAll('#tab-vehicle .check-item.chk');for(var i=0;i<ck.length;i++){ck[i].classList.remove('chk');var b=ck[i].querySelector('.chk-box');if(b)b.textContent='';var inp=ck[i].querySelector('input');if(inp)inp.checked=false}window.scrollTo(0,0)}
@@ -683,11 +685,11 @@ function saveReport(r){return loadBin().then(function(rec){if(!rec.reports)rec.r
 function sendEmail(report){var c=cfg();if(!c.ejsSvc||!c.ejsTpl||!c.ejsKey)return Promise.resolve();var tl={injury:'Injury/Illness',biological:'Biological Exposure',chemical:'Chemical Exposure',vehicle:'Vehicle Incident'};function doSend(){return emailjs.send(c.ejsSvc,c.ejsTpl,{to_email:c.notifyEmail,subject:'[NCEMS Incident] '+(tl[report.type]||report.type)+' - '+(report.name||report.driver),employee_name:report.name||report.driver,incident_type:tl[report.type]||report.type,incident_date:report.date,location:report.location||'-',report_id:report.id,severity:report.severity||'-'})}if(!window.emailjs){return loadScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js').then(function(){emailjs.init(c.ejsKey);return doSend()}).catch(function(e){console.warn('Email failed',e)})}else{return doSend().catch(function(e){console.warn(e)})}}
 function loadScript(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
 var reportsUnlocked=false,allReps=[],currentFilter='all',pendingCloseId=null,currentViewRep=null;
-function verifyPin(){if(gv('pin-input')===cfg().pin){reportsUnlocked=true;hd('reports-locked');sd('reports-unlocked');loadReports()}else{sd('pin-error')}}
+function verifyPin(){if(gv('pin-input')===cfg().pin){reportsUnlocked=true;hd('reports-locked');sd('reports-unlocked');var ns=$('nav-settings');if(ns)ns.style.display='flex';loadReports()}else{sd('pin-error')}}
 function loadReports(){$('reports-list').innerHTML='<div class="spinner"></div>';loadBin().then(function(rec){allReps=rec.reports||[];renderReps(currentFilter)})}
 function filterReps(f,btn){currentFilter=f;var cs=document.querySelectorAll('.fchip');for(var i=0;i<cs.length;i++)cs[i].classList.remove('active');btn.classList.add('active');renderReps(f)}
-function renderReps(f){var reps=allReps;if(f==='new')reps=reps.filter(function(r){return r.status==='new'});else if(f!=='all')reps=reps.filter(function(r){return r.type===f});var c=$('reports-list');if(!reps.length){c.innerHTML='<div style="text-align:center;padding:40px 16px;color:var(--slate-mid)"><div style="font-size:40px;margin-bottom:10px">\uD83D\uDCCB</div><div style="font-size:14px;font-weight:700">No reports found</div></div>';return}var tl={injury:'Injury/Illness',biological:'Biological Exposure',chemical:'Chemical Exposure',vehicle:'Vehicle Incident'};var bc={injury:'badge-injury',biological:'badge-biological',chemical:'badge-chemical',vehicle:'badge-vehicle'};var sc={'new':'s-new',reviewed:'s-reviewed',closed:'s-closed'};var sp={green:'spill-green',yellow:'spill-yellow',orange:'spill-orange',red:'spill-red'};
-c.innerHTML=reps.map(function(r){var dt=new Date(r.submittedAt);var ds=dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});var ts=dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});var who=r.name||r.driver||'Unknown';var idJson=JSON.stringify(r.id);return '<div class="rep-card"><div class="rep-card-hdr"><span class="type-badge '+(bc[r.type]||'')+'">'+(tl[r.type]||r.type)+'</span><span class="rep-date">'+ds+' '+ts+'</span></div><div class="rep-body"><div class="rep-name">'+who+'</div>'+(r.location?'<div class="rep-detail">\uD83D\uDCCD '+r.location+'</div>':'')+(r.unit?'<div class="rep-detail">\uD83D\uDE92 Unit '+r.unit+'</div>':'')+(r.agency?'<div class="rep-detail">\uD83C\uDFDB '+r.agency+'</div>':'')+'<div style="font-size:13px;color:var(--slate);margin-top:7px;line-height:1.4">'+(r.narrative||'').slice(0,100)+((r.narrative||'').length>100?'\u2026':'')+'</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px"><span class="status-pill '+(sc[r.status]||'s-new')+'">'+(r.status||'New')+'</span>'+(r.severity?'<span class="status-pill '+(sp[r.severity]||'')+'">'+r.severity.toUpperCase()+'</span>':'')+(r.exposureConfirmed?'<span class="status-pill spill-red">\uD83D\uDEA8 Exposure</span>':'')+(r.possibleHosp?'<span class="status-pill spill-red">\u26A0\uFE0F Possible Hosp.</span>':'')+'<span style="font-size:10px;color:var(--slate-mid);align-self:center">'+r.id+'</span></div><div class="rep-actions"><button class="rep-btn rep-btn-view" onclick=\'viewRep('+idJson+')\'>View Full</button><button class="rep-btn rep-btn-review" onclick=\'markStatus('+idJson+',"reviewed")\'>Reviewed</button><button class="rep-btn rep-btn-close" onclick=\'askClose('+idJson+')\'>Close</button><button class="rep-btn rep-btn-pdf" onclick=\'viewRepPDF('+idJson+')\'>PDF</button></div>'+(r.exposureConfirmed?'<div style="background:var(--red);color:#fff;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:800;display:inline-block;margin-top:7px">\uD83D\uDCCB BC: Biological Exposure Procedure Required</div>':'')+'</div></div>'}).join('')}
+function renderReps(f){var reps=allReps;if(f==='new')reps=reps.filter(function(r){return r.status==='new'});else if(f!=='all')reps=reps.filter(function(r){return r.type===f});var c=$('reports-list');if(!reps.length){c.innerHTML='<div style="text-align:center;padding:40px 16px;color:var(--slate-mid)"><div style="font-size:40px;margin-bottom:10px"></div><div style="font-size:14px;font-weight:700">No reports found</div></div>';return}var tl={injury:'Injury/Illness',biological:'Biological Exposure',chemical:'Chemical Exposure',vehicle:'Vehicle Incident'};var bc={injury:'badge-injury',biological:'badge-biological',chemical:'badge-chemical',vehicle:'badge-vehicle'};var sc={'new':'s-new',reviewed:'s-reviewed',closed:'s-closed'};var sp={green:'spill-green',yellow:'spill-yellow',orange:'spill-orange',red:'spill-red'};
+c.innerHTML=reps.map(function(r){var dt=new Date(r.submittedAt);var ds=dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});var ts=dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});var who=r.name||r.driver||'Unknown';var idJson=JSON.stringify(r.id);return '<div class="rep-card"><div class="rep-card-hdr"><span class="type-badge '+(bc[r.type]||'')+'">'+(tl[r.type]||r.type)+'</span><span class="rep-date">'+ds+' '+ts+'</span></div><div class="rep-body"><div class="rep-name">'+who+'</div>'+(r.location?'<div class="rep-detail">'+r.location+'</div>':'')+(r.unit?'<div class="rep-detail">Unit '+r.unit+'</div>':'')+(r.agency?'<div class="rep-detail">'+r.agency+'</div>':'')+'<div style="font-size:13px;color:var(--slate);margin-top:7px;line-height:1.4">'+(r.narrative||'').slice(0,100)+((r.narrative||'').length>100?'\u2026':'')+'</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px"><span class="status-pill '+(sc[r.status]||'s-new')+'">'+(r.status||'New')+'</span>'+(r.severity?'<span class="status-pill '+(sp[r.severity]||'')+'">'+r.severity.toUpperCase()+'</span>':'')+(r.exposureConfirmed?'<span class="status-pill spill-red">Exposure</span>':'')+(r.possibleHosp?'<span class="status-pill spill-red">Possible Hosp.</span>':'')+'<span style="font-size:10px;color:var(--slate-mid);align-self:center">'+r.id+'</span></div><div class="rep-actions"><button class="rep-btn rep-btn-view" onclick=\'viewRep('+idJson+')\'>View Full</button><button class="rep-btn rep-btn-review" onclick=\'markStatus('+idJson+',"reviewed")\'>Reviewed</button><button class="rep-btn rep-btn-close" onclick=\'askClose('+idJson+')\'>Close</button><button class="rep-btn rep-btn-pdf" onclick=\'viewRepPDF('+idJson+')\'>PDF</button></div>'+(r.exposureConfirmed?'<div style="background:var(--red);color:#fff;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:800;display:inline-block;margin-top:7px">BC: Biological Exposure Procedure Required</div>':'')+'</div></div>'}).join('')}
 function markStatus(id,s){loadBin().then(function(rec){var r=(rec.reports||[]).find(function(x){return x.id===id});if(r){r.status=s;saveBin(rec).then(function(){allReps=rec.reports||[];renderReps(currentFilter)})}})}
 function askClose(id){pendingCloseId=id;$('conf-overlay').classList.add('open');$('conf-box').classList.add('open')}
 function cancelConf(){pendingCloseId=null;$('conf-overlay').classList.remove('open');$('conf-box').classList.remove('open')}
@@ -698,8 +700,8 @@ function viewRep(id){var r=allReps.find(function(x){return x.id===id});if(!r)ret
 var body=rowHTML('Report ID','<span style="font-family:monospace">'+r.id+'</span>')+rowHTML('Submitted',dt)+rowHTML('Agency',r.agency)+rowHTML('Status',r.status||'new')+'<div class="frep-divider"></div>'+rowHTML(r.type==='vehicle'?'Driver':'Employee',who)+rowHTML('Date of Incident',r.date)+rowHTML('Time',r.time)+rowHTML('Location',r.location);
 if(r.runNumber)body+=rowHTML('CRESA Run #',r.runNumber);
 if(r.type==='injury'){body+='<div class="frep-divider"></div>'+rowHTML('Seek Treatment',r.treatment)+rowHTML('Nature',(r.nature||[]).join(', '))+rowHTML('Activity',(r.activity||[]).join(', '))+rowHTML('Body Parts',(r.bodyParts||[]).join(', '))+rowHTML('PPE',r.ppe)}
-if(r.type==='biological'){body+='<div class="frep-divider"></div>'+rowHTML('Exposure Confirmed',r.exposureConfirmed?'\uD83D\uDEA8 YES - BC must complete Exposure Procedure':(r.contaminationOnly?'\u26A0\uFE0F Contamination Only':'No'))+rowHTML('Decontamination',r.decon)+rowHTML('Route of Exposure',(r.routeOfExposure||[]).join(', '))+rowHTML('Type of Exposure',(r.typeOfExposure||[]).join(', '))+rowHTML('Body Parts',(r.bodyParts||[]).join(', '))+rowHTML('Source Hospital',r.hospital);if(r.exposureConfirmed){body+='<div style="background:var(--red);color:#fff;border-radius:6px;padding:8px 11px;font-size:12px;font-weight:800;margin:8px 0">\uD83D\uDCCB Biological Exposure Procedure Required</div>'+bioProc(r)}}
-if(r.type==='chemical'){body+='<div class="frep-divider"></div>'+rowHTML('Chemical',r.chemName)+rowHTML('Other Chemicals',r.chemOther)+rowHTML('Exposure Confirmed',r.chemExposure?'\uD83D\uDEA8 YES':'No')+rowHTML('S/S within 48h',r.chem48===true?'Yes':r.chem48===false?'No':'N/A')+rowHTML('Decontamination',r.chemDecon)+rowHTML('Route',(r.routeOfExposure||[]).join(', '))+rowHTML('Body Parts',(r.bodyParts||[]).join(', '))+rowHTML('Symptoms',r.chemSymptoms)}
+if(r.type==='biological'){body+='<div class="frep-divider"></div>'+rowHTML('Exposure Confirmed',r.exposureConfirmed?'YES - BC must complete Exposure Procedure':(r.contaminationOnly?'Contamination Only':'No'))+rowHTML('Decontamination',r.decon)+rowHTML('Route of Exposure',(r.routeOfExposure||[]).join(', '))+rowHTML('Type of Exposure',(r.typeOfExposure||[]).join(', '))+rowHTML('Body Parts',(r.bodyParts||[]).join(', '))+rowHTML('Source Hospital',r.hospital);if(r.exposureConfirmed){body+='<div style="background:var(--red);color:#fff;border-radius:6px;padding:8px 11px;font-size:12px;font-weight:800;margin:8px 0">Biological Exposure Procedure Required</div>'+bioProc(r)+'<label class="check-item'+(r.bioProcDone?' chk':'')+'" id="bio-proc-done" onclick="toggleChk(this)" style="margin-top:8px"><input type="checkbox"'+(r.bioProcDone?' checked':'')+'><div class="chk-box">'+(r.bioProcDone?'\u2713':'')+'</div><span class="chk-label">Biological Exposure Procedure completed</span></label>'}}
+if(r.type==='chemical'){body+='<div class="frep-divider"></div>'+rowHTML('Chemical',r.chemName)+rowHTML('Other Chemicals',r.chemOther)+rowHTML('Exposure Confirmed',r.chemExposure?'YES':'No')+rowHTML('S/S within 48h',r.chem48===true?'Yes':r.chem48===false?'No':'N/A')+rowHTML('Decontamination',r.chemDecon)+rowHTML('Route',(r.routeOfExposure||[]).join(', '))+rowHTML('Body Parts',(r.bodyParts||[]).join(', '))+rowHTML('Symptoms',r.chemSymptoms)}
 if(r.type==='vehicle'){body+='<div class="frep-divider"></div>'+rowHTML('Severity',(r.severity||'').toUpperCase())+rowHTML('Unit',r.unit)+rowHTML('Crew',r.crew)+rowHTML('BC Notified',r.bcNotified)+rowHTML('Response Mode',(r.responseMode||[]).join(', '))+rowHTML('Weather',r.weather)+rowHTML('Road',r.road)+rowHTML('Lighting',r.lighting)+rowHTML('Speed',r.speed)+rowHTML('Seatbelt',r.seatbelt)+rowHTML('Spotter',r.spotter)+rowHTML('Incident Types',(r.incidentTypes||[]).join(', '))+rowHTML('Injured',r.injured?'Yes':'No')+rowHTML('Patient Onboard',r.patientOnboard?'Yes':'No')+rowHTML('Drivable',r.drivable?'Yes':'No')+rowHTML('Police Case #',r.caseNumber)+'<div class="frep-divider"></div><div style="font-size:12px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Supervisor Review</div>'+rowHTML('Finding',r.finding||'Pending')+rowHTML('Policy Concerns',r.policy)+rowHTML('Training Needed',r.training)+rowHTML('Maintenance',r.maintenance)+rowHTML('Follow-Up Assigned',r.followupWho)+rowHTML('Due Date',r.followupDate)+rowHTML('Final Notes',r.finalNotes)}
 body+='<div class="frep-divider"></div>'+rowHTML('Narrative','<span style="white-space:pre-wrap">'+(r.narrative||'\u2014')+'</span>');
 if(r.witnesses)body+=rowHTML('Witnesses',r.witnesses);
@@ -707,17 +709,22 @@ body+='<div class="frep-divider"></div><div style="font-size:12px;font-weight:80
 body+='<div class="frep-divider"></div><div style="font-size:12px;font-weight:800;color:var(--slate-mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Signatures</div><div class="frep-label">Employee / Driver Signature</div><div class="sig-area">Sign on printed form</div><div class="frep-label" style="margin-top:8px">Duty Officer / BC Signature</div><div class="sig-area">Sign on printed form</div><div class="frep-label" style="margin-top:8px">HSO Signature</div><div class="sig-area">Sign on printed form</div>';
 $('rep-sheet-body').innerHTML=body;$('rep-overlay').classList.add('open')}
 function bioProc(r){var bbExp=r.bbeA&&anyYes(r.bbeA);var abExp=r.abeA&&anyYes(r.abeA);var s='<div style="font-size:12px;font-weight:800;color:var(--red);margin:8px 0;text-transform:uppercase;letter-spacing:.7px">Biological Exposure Procedure Steps</div>';if(bbExp){s+='<div style="font-size:12px;color:var(--slate);line-height:1.7;margin-bottom:8px"><strong>Bloodborne:</strong><br>1. BC determines destination hospital of source patient.<br>2. Notify ER Team Leader a bloodborne exposure occurred.<br>3. Request source patient rapid HIV test + hepatitis panel.<br>4. Take exposed employee to ER (same hospital if possible).<br>5. Register employee as ER patient incl. L&amp;I forms.<br>6. ER tests source patient; results communicated to employee.<br>7. Ensure medical consultation/referral. If source refuses testing, note on Form H and email Infection Control Officer.</div>'}if(abExp){s+='<div style="font-size:12px;color:var(--slate);line-height:1.7"><strong>Airborne:</strong><br>1. BC determines destination of source patient.<br>2. Notify ER Team Leader an airborne exposure occurred.<br>3. Request source patient evaluation for infectious airborne disease.<br>4. If active TB, notify Infection Control Officer for employee TB testing.<br>5. Employee monitors for symptoms 7-10 days; follow up per ER guidance.</div>'}return s}
-function saveComments(id){loadBin().then(function(rec){var r=(rec.reports||[]).find(function(x){return x.id===id});if(r){r.bcComments=$('bc-cmt')?$('bc-cmt').value:'';r.hsoComments=$('hso-cmt')?$('hso-cmt').value:'';saveBin(rec).then(function(){allReps=rec.reports||[];alert('Comments saved.')})}})}
+function saveComments(id){loadBin().then(function(rec){var r=(rec.reports||[]).find(function(x){return x.id===id});if(r){r.bcComments=$('bc-cmt')?$('bc-cmt').value:'';r.hsoComments=$('hso-cmt')?$('hso-cmt').value:'';var bp=$('bio-proc-done');if(bp)r.bioProcDone=bp.classList.contains('chk');saveBin(rec).then(function(){allReps=rec.reports||[];alert('Saved.')})}})}
 function viewRepPDF(id){viewRep(id);setTimeout(pdfCurrentRep,400)}
 function pdfCurrentRep(){if(!currentViewRep)return;var r=currentViewRep;var who=r.name||r.driver||'Unknown';var tl={injury:'Injury/Illness',biological:'Biological Exposure',chemical:'Chemical Exposure',vehicle:'Vehicle Incident'};var win=window.open('','_blank');
+var F=function(l,v){return '<div class="field"><div class="lbl">'+l+'</div><div class="val">'+((v===0?'0':v)||'-')+'</div></div>'};
+var R=function(){return '<div class="row">'+Array.prototype.slice.call(arguments).join('')+'</div>'};
+var YN=function(v){return v===true?'Yes':v===false?'No':'-'};
 var spec='';
-if(r.type==='injury')spec='<h2>Injury Details</h2><div class="row"><div class="field"><div class="lbl">Treatment</div><div class="val">'+(r.treatment||'-')+'</div></div><div class="field"><div class="lbl">PPE</div><div class="val">'+(r.ppe||'-')+'</div></div></div><div class="row"><div class="field"><div class="lbl">Nature</div><div class="val">'+((r.nature||[]).join(', ')||'-')+'</div></div></div><div class="row"><div class="field"><div class="lbl">Body Parts</div><div class="val">'+((r.bodyParts||[]).join(', ')||'-')+'</div></div></div>';
-if(r.type==='biological')spec='<h2>Biological Exposure</h2><div class="row"><div class="field"><div class="lbl">Exposure Confirmed</div><div class="val">'+(r.exposureConfirmed?'YES - BC must complete Exposure Procedure':'No')+'</div></div><div class="field"><div class="lbl">Decon</div><div class="val">'+(r.decon||'-')+'</div></div></div><div class="row"><div class="field"><div class="lbl">Route</div><div class="val">'+((r.routeOfExposure||[]).join(', ')||'-')+'</div></div><div class="field"><div class="lbl">Type</div><div class="val">'+((r.typeOfExposure||[]).join(', ')||'-')+'</div></div></div>';
-if(r.type==='chemical')spec='<h2>Chemical Exposure</h2><div class="row"><div class="field"><div class="lbl">Chemical</div><div class="val">'+(r.chemName||'-')+'</div></div><div class="field"><div class="lbl">Exposure</div><div class="val">'+(r.chemExposure?'YES':'No')+'</div></div></div>';
-if(r.type==='vehicle')spec='<h2>Vehicle Incident</h2><div class="row"><div class="field"><div class="lbl">Unit</div><div class="val">'+(r.unit||'-')+'</div></div><div class="field"><div class="lbl">Severity</div><div class="val">'+((r.severity||'').toUpperCase())+'</div></div></div><div class="row"><div class="field"><div class="lbl">Finding</div><div class="val">'+(r.finding||'Pending')+'</div></div><div class="field"><div class="lbl">Police Case #</div><div class="val">'+(r.caseNumber||'-')+'</div></div></div>';
+if(r.type!=='vehicle')spec+='<h2>Incident Information</h2>'+R(F('Report Date (Today)',r.todayDate),F('CRESA Run #',r.runNumber))+R(F('PPE in Use',r.ppe),F('Witnesses',r.witnesses));
+if(r.type==='injury')spec+='<h2>Injury / Illness Details</h2>'+R(F('Will Seek Treatment',r.treatment),F('Possible Hospitalization',YN(r.possibleHosp)))+R(F('Nature of Injury / Illness',(r.nature||[]).join(', ')))+R(F('Activity at Time of Incident',(r.activity||[]).join(', ')))+R(F('Body Part(s) Affected',(r.bodyParts||[]).join(', ')));
+if(r.type==='biological'){spec+='<h2>Biological Exposure Details</h2>'+R(F('Exposure Confirmed',r.exposureConfirmed?'YES - BC must complete Exposure Assessment immediately':(r.contaminationOnly?'Contamination Only':'No')),F('Decontamination',r.decon))+R(F('Route of Exposure',(r.routeOfExposure||[]).join(', ')),F('Type of Exposure',(r.typeOfExposure||[]).join(', ')))+R(F('Body Part(s) Affected',(r.bodyParts||[]).join(', ')),F('Source Hospital',r.hospital));if(r.exposureConfirmed)spec+=R(F('Biological Exposure Procedure',r.bioProcDone?'Completed':'REQUIRED - not yet completed'))+'<div style="border:1px solid #fca5a5;border-radius:6px;padding:8px 11px;margin:6px 0;font-size:12px;line-height:1.6">'+bioProc(r)+'</div>'}
+if(r.type==='chemical')spec+='<h2>Chemical Exposure Details</h2>'+R(F('Chemical / Substance',r.chemName),F('Exposure Confirmed',r.chemExposure?'YES':'No'))+R(F('Other Chemicals',r.chemOther),F('S/S Within 48h',r.chem48===true?'Yes':r.chem48===false?'No':'N/A'))+R(F('Decontamination',r.chemDecon),F('Route of Exposure',(r.routeOfExposure||[]).join(', ')))+R(F('Body Part(s) Affected',(r.bodyParts||[]).join(', ')))+R(F('Signs / Symptoms',r.chemSymptoms));
+if(r.type==='vehicle')spec+='<h2>Vehicle Incident Details</h2>'+R(F('Severity',(r.severity||'').toUpperCase()),F('Unit',r.unit))+R(F('Crew Members',r.crew),F('BC / Supervisor Notified',r.bcNotified))+R(F('Response Mode',(r.responseMode||[]).join(', ')),F('Incident Types',(r.incidentTypes||[]).join(', ')))+R(F('Weather',r.weather),F('Road Conditions',r.road))+R(F('Lighting',r.lighting),F('Traffic',r.traffic))+R(F('Estimated Speed',r.speed),F('Seatbelt',r.seatbelt))+R(F('Spotter',r.spotter),F('Patient Care Affected',r.patientCare))+R(F('CRESA Run #',r.runNumber),F('Police Case #',r.caseNumber))+'<h2>Assessment Answers</h2>'+R(F('Anyone Injured',YN(r.injured)),F('Patient Onboard',YN(r.patientOnboard)))+R(F('Emergent Response',YN(r.emergent)),F('Law Enforcement Notified',YN(r.lawEnforcement)))+R(F('Vehicle Drivable',YN(r.drivable)),F('Damage to Other Veh/Property',YN(r.otherDamage)))+R(F('Occurred While Backing',YN(r.backing)),F('Spotter Used',YN(r.spotterUsed)))+R(F('Contact / Near Miss',YN(r.contact)),F('Chief Officer Notified',YN(r.bcNotifiedYN)))+R(F('Immediate Removal From Service',YN(r.removeFromService)),F('Notifications',(r.notifications||[]).join(', ')))+'<h2>Supervisor Review</h2>'+R(F('Preliminary Finding',r.finding||'Pending'),F('Follow-Up Assigned',r.followupWho))+R(F('Training Needed',r.training),F('Maintenance Needed',r.maintenance))+R(F('Follow-Up Due Date',r.followupDate),F('Policy Concerns',r.policy))+R(F('Final Notes',r.finalNotes));
 win.document.write('<!DOCTYPE html><html><head><title>Incident Report '+r.id+'</title><style>body{font-family:Arial,sans-serif;max-width:760px;margin:0 auto;padding:28px;font-size:13px;color:#1e293b}h1{font-size:17px;font-weight:900;color:#b91c1c;margin-bottom:3px}h2{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin:14px 0 5px;border-bottom:1px solid #e2e8f0;padding-bottom:3px}.row{display:flex;gap:16px;margin-bottom:7px}.field{flex:1}.lbl{font-size:10px;font-weight:700;text-transform:uppercase;color:#64748b;letter-spacing:.7px;margin-bottom:1px}.val{font-size:13px;font-weight:600;min-height:15px;line-height:1.4}.sig{border-bottom:1.5px solid #334155;margin-top:26px;margin-bottom:3px}.hdr{background:#b91c1c;color:#fff;padding:10px 18px;border-radius:6px;margin-bottom:16px}.warn{background:#fef3c7;border:1px solid #fcd34d;border-radius:6px;padding:8px 12px;font-size:11px;color:#78350f;margin-bottom:10px}@media print{body{padding:12px}}</style></head><body><div class="hdr"><h1>ON-DUTY INCIDENT REPORT</h1><div style="font-size:10px;opacity:.75;letter-spacing:2px;text-transform:uppercase;margin-top:2px">North Country EMS &middot; Clark Fire District 13</div></div>'+(r.type==='vehicle'?'<div class="warn">This report is for internal safety, operational review, risk management, and administrative follow-up. Personnel shall provide factual information only.</div>':'')+'<h2>Report Information</h2><div class="row"><div class="field"><div class="lbl">Report ID</div><div class="val">'+r.id+'</div></div><div class="field"><div class="lbl">Type</div><div class="val">'+(tl[r.type]||r.type)+'</div></div><div class="field"><div class="lbl">Agency</div><div class="val">'+(r.agency||'-')+'</div></div></div><div class="row"><div class="field"><div class="lbl">Status</div><div class="val">'+(r.status||'New')+'</div></div><div class="field"><div class="lbl">Submitted</div><div class="val">'+new Date(r.submittedAt).toLocaleDateString()+'</div></div></div><h2>Personnel</h2><div class="row"><div class="field"><div class="lbl">'+(r.type==='vehicle'?'Driver':'Employee')+'</div><div class="val">'+who+'</div></div><div class="field"><div class="lbl">Date</div><div class="val">'+(r.date||'-')+'</div></div><div class="field"><div class="lbl">Time</div><div class="val">'+(r.time||'-')+'</div></div></div><div class="row"><div class="field"><div class="lbl">Location</div><div class="val">'+(r.location||'-')+'</div></div></div>'+spec+'<h2>Narrative</h2><div class="val" style="white-space:pre-wrap;line-height:1.6;min-height:60px">'+(r.narrative||'-')+'</div><h2>Comments</h2><div class="lbl">BC / Supervisor</div><div class="val" style="min-height:36px">'+(r.bcComments||'')+'</div><div class="lbl" style="margin-top:8px">HSO</div><div class="val" style="min-height:36px">'+(r.hsoComments||'')+'</div><h2>Signatures</h2><div class="row" style="margin-top:18px"><div class="field"><div class="sig"></div><div class="lbl">Employee / Driver Signature</div></div><div class="field"><div class="sig"></div><div class="lbl">Date</div></div></div><div class="row" style="margin-top:16px"><div class="field"><div class="sig"></div><div class="lbl">Duty Officer / BC Signature</div></div><div class="field"><div class="sig"></div><div class="lbl">Date</div></div></div><div class="row" style="margin-top:16px"><div class="field"><div class="sig"></div><div class="lbl">HSO Signature</div></div><div class="field"><div class="sig"></div><div class="lbl">Date</div></div></div><div style="margin-top:24px;font-size:10px;color:#94a3b8;text-align:center">Created by D. Boyce &middot; North Country EMS / Clark Fire District 13 &middot; Policy Ref: Injury Reporting &middot; Generated '+new Date().toLocaleString()+'</div><scr'+'ipt>window.onload=function(){window.print()}<\/scr'+'ipt></body></html>');win.document.close()}
-function printVehReport(){var saved=currentViewRep;currentViewRep={id:gv('vf-refnum'),type:'vehicle',agency:agency,severity:vehSeverity,date:gv('vf-date'),time:gv('vf-time'),unit:gv('vf-unit'),driver:gv('vf-driver'),crew:gv('vf-crew'),bcNotified:gv('vf-bc-notified'),location:gv('vf-location'),weather:gv('vf-weather'),road:gv('vf-road'),lighting:gv('vf-lighting'),speed:gv('vf-speed'),seatbelt:gv('vf-seatbelt'),spotter:gv('vf-spotter'),incidentTypes:getChk('veh-type-grid'),narrative:gv('vf-narrative'),caseNumber:gv('vf-case2'),finding:gv('vf-finding'),policy:gv('vf-policy'),training:gv('vf-training'),maintenance:gv('vf-maintenance'),followupWho:gv('vf-followup-who'),followupDate:gv('vf-followup-date'),finalNotes:gv('vf-final-notes'),submittedAt:Date.now(),status:'Draft'};pdfCurrentRep();currentViewRep=saved}
+function printVehReport(){var saved=currentViewRep;currentViewRep={id:gv('vf-refnum'),type:'vehicle',agency:agency,severity:vehSeverity,date:gv('vf-date'),time:gv('vf-time'),unit:gv('vf-unit'),driver:gv('vf-driver'),crew:gv('vf-crew'),bcNotified:gv('vf-bc-notified'),location:gv('vf-location'),responseMode:getChk('veh-mode-grid'),weather:gv('vf-weather'),road:gv('vf-road'),lighting:gv('vf-lighting'),traffic:gv('vf-traffic'),speed:gv('vf-speed'),seatbelt:gv('vf-seatbelt'),spotter:gv('vf-spotter'),patientCare:gv('vf-pt-care'),incidentTypes:getChk('veh-type-grid'),narrative:gv('vf-narrative'),notifications:getChk('veh-notif-grid'),caseNumber:gv('vf-case2'),runNumber:gv('vf-run'),injured:vehAnswers[1],patientOnboard:vehAnswers[2],emergent:vehAnswers[3],lawEnforcement:vehAnswers[4],drivable:vehAnswers[5],otherDamage:vehAnswers[6],backing:vehAnswers[7],spotterUsed:vehAnswers[8],contact:vehAnswers[9],bcNotifiedYN:vehAnswers[10],removeFromService:vehAnswers[11],finding:gv('vf-finding'),policy:gv('vf-policy'),training:gv('vf-training'),maintenance:gv('vf-maintenance'),followupWho:gv('vf-followup-who'),followupDate:gv('vf-followup-date'),finalNotes:gv('vf-final-notes'),submittedAt:Date.now(),status:'Draft'};pdfCurrentRep();currentViewRep=saved}
 function resetAll(){incType=null;injQ1=null;injQ2=null;agreed=false;treatmentYes=null;bbcA=[null,null,null];bbeA=[null,null,null,null];abcA=[null,null,null,null];abeA=[null,null,null];chemA=[null,null,null,null];chem48=null;$('success-screen').classList.remove('show');$('form-body').style.display='block';hd('splash-hosp');hd('report-main');sd('splash-agency');hd('examples-section');hd('step2-wrap');hd('step3-wrap');['injury','biological','chemical'].forEach(function(t){if($('btn-'+t))$('btn-'+t).className='inc-btn'});['f-name','f-today','f-date','f-time','f-run','f-location','f-ppe','f-witnesses','f-narrative','f-decon','f-hospital','f-chem-name','f-chem-other','f-chem-decon','f-chem-symptoms','f-refnum'].forEach(function(id){if($(id))$(id).value=''});var ck=document.querySelectorAll('#tab-report .check-item.chk');for(var i=0;i<ck.length;i++){ck[i].classList.remove('chk');var b=ck[i].querySelector('.chk-box');if(b)b.textContent='';var inp=ck[i].querySelector('input');if(inp)inp.checked=false}$('agree-row').classList.remove('agreed');$('agree-box').textContent='';hd('notify-panel');hd('proceed-wrap');window.scrollTo(0,0)}
+function startOver(){if(!confirm('Start over? This clears the current report you are working on.'))return;resetAll();resetVeh();showTab('report')}
 document.addEventListener('DOMContentLoaded',function(){var today=new Date().toISOString().split('T')[0];['f-today','f-date','vf-date'].forEach(function(id){if($(id))$(id).value=today});var t=new Date().toTimeString().slice(0,5);['f-time','vf-time'].forEach(function(id){if($(id))$(id).value=t});var pin=$('pin-input');if(pin)pin.addEventListener('keydown',function(e){if(e.key==='Enter')verifyPin()})});
 </script>
 </body>
